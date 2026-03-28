@@ -1,0 +1,29 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+
+# Build
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Env
+.env
+.env.prod
+
+
+# IDE / OS
+.vscode/
+.idea/
+
+# GitHub
+.github/
+
+# Other
+/public
+dump_prod/

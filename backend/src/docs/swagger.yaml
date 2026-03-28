@@ -1,0 +1,1300 @@
+openapi: 3.0.0
+
+info:
+  title: Novelya - API REST
+  description: |
+    Une API REST sécurisée pour gérer les utilisateurs, les light novels, les listes de souhaits et les historiques d'achats.
+  version: 1.0.0
+
+servers:
+  - url: https://api.novelya.unordinary.dev
+    description: Serveur de production
+  - url: http://localhost:3000
+    description: Serveur local de développement
+
+components:
+  securitySchemes:
+    CookieAuth:
+      type: apiKey
+      in: cookie
+      name: token
+      description: Authentification JWT via cookie HttpOnly. Le token est automatiquement envoyé avec les requêtes.
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID unique de l'utilisateur (MongoDB ObjectId)
+          example: "507f1f77bcf86cd799439011"
+        name:
+          type: string
+          description: Nom complet de l'utilisateur
+          example: "John Doe"
+        email:
+          type: string
+          format: email
+          description: Adresse email de l'utilisateur
+          example: "john.doe@example.com"
+        cart:
+          type: array
+          description: Panier de l'utilisateur
+          items:
+            $ref: "#/components/schemas/CartItem"
+        purchaseHistory:
+          type: array
+          description: Historique des achats de l'utilisateur
+          items:
+            $ref: "#/components/schemas/PurchaseHistoryItem"
+        wishlist:
+          type: array
+          description: Liste de souhaits de l'utilisateur (IDs des light novels)
+          items:
+            type: string
+            example: "507f1f77bcf86cd799439011"
+      required:
+        - name
+        - email
+
+    UserInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nom complet de l'utilisateur
+          example: "John Doe"
+        email:
+          type: string
+          format: email
+          description: Adresse email de l'utilisateur
+          example: "john.doe@example.com"
+      required:
+        - name
+        - email
+
+    LightNovel:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID unique du light novel (MongoDB ObjectId)
+          example: "507f1f77bcf86cd799439011"
+        title:
+          type: string
+          description: Titre du light novel
+          example: "Sword Art Online - Volume 1"
+        author:
+          type: string
+          description: Auteur du light novel
+          example: "Reki Kawahara"
+        price:
+          type: number
+          format: float
+          description: Prix du light novel en euros
+          example: 12.99
+        inStock:
+          type: boolean
+          description: Disponibilité du light novel en stock
+          example: true
+        cover:
+          type: string
+          description: URL de l'image de couverture
+          example: "https://example.com/covers/sao1.jpg"
+        description:
+          type: string
+          description: Description détaillée du light novel
+          example: "Le premier volume de la série Sword Art Online"
+        genres:
+          type: array
+          description: Genres du light novel
+          items:
+            type: string
+          example: ["Fantasy", "Action", "Romance"]
+        releaseDate:
+          type: string
+          format: date-time
+          description: Date de sortie du light novel
+          example: "2009-04-10T00:00:00Z"
+      required:
+        - title
+        - author
+        - price
+        - inStock
+        - cover
+        - description
+        - genres
+        - releaseDate
+
+    LightNovelSummary:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID unique du light novel (MongoDB ObjectId)
+          example: "507f1f77bcf86cd799439011"
+        title:
+          type: string
+          description: Titre du light novel
+          example: "Sword Art Online - Volume 1"
+        author:
+          type: string
+          description: Auteur du light novel
+          example: "Reki Kawahara"
+        price:
+          type: number
+          format: float
+          description: Prix du light novel en euros
+          example: 12.99
+        inStock:
+          type: boolean
+          description: Disponibilité du light novel en stock
+          example: true
+        cover:
+          type: string
+          description: URL de l'image de couverture
+          example: "https://example.com/covers/sao1.jpg"
+      required:
+        - title
+        - author
+        - price
+        - inStock
+        - cover
+
+    LightNovelInput:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Titre du light novel
+          example: "Sword Art Online - Volume 1"
+        author:
+          type: string
+          description: Auteur du light novel
+          example: "Reki Kawahara"
+        price:
+          type: number
+          format: float
+          description: Prix du light novel en euros
+          example: 12.99
+        inStock:
+          type: boolean
+          description: Disponibilité du light novel en stock
+          example: true
+        cover:
+          type: string
+          description: URL de l'image de couverture
+          example: "https://example.com/covers/sao1.jpg"
+        description:
+          type: string
+          description: Description détaillée du light novel
+          example: "Le premier volume de la série Sword Art Online"
+        genres:
+          type: array
+          description: Genres du light novel
+          items:
+            type: string
+          example: ["Fantasy", "Action", "Romance"]
+        releaseDate:
+          type: string
+          format: date-time
+          description: Date de sortie du light novel
+          example: "2009-04-10T00:00:00Z"
+      required:
+        - title
+        - author
+        - price
+        - inStock
+        - cover
+        - description
+        - genres
+        - releaseDate
+
+    CartItem:
+      type: object
+      properties:
+        lightNovelId:
+          type: string
+          description: ID du light novel dans le panier
+          example: "507f1f77bcf86cd799439011"
+        quantity:
+          type: integer
+          description: Quantité du light novel dans le panier
+          example: 2
+      required:
+        - lightNovelId
+        - quantity
+
+    PurchaseHistoryItem:
+      type: object
+      properties:
+        cart:
+          type: array
+          description: Panier au moment de l'achat
+          items:
+            $ref: "#/components/schemas/CartItem"
+        purchaseDate:
+          type: string
+          format: date-time
+          description: Date de l'achat
+          example: "2023-12-25T10:30:00Z"
+      required:
+        - cart
+        - purchaseDate
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Message d'erreur
+          example: "Erreur lors de la récupération de l'utilisateur"
+      required:
+        - error
+
+paths:
+  /register:
+    post:
+      summary: Créer un nouveau compte utilisateur
+      description: Permet à un nouvel utilisateur de s'inscrire en créant un compte
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInput"
+            example:
+              name: "John Doe"
+              email: "john.doe@example.com"
+              password: "Motdepasse123"
+      responses:
+        "201":
+          description: Utilisateur créé avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Utilisateur créé avec succès"
+                  userId:
+                    type: string
+                    example: "507f1f77bcf86cd799439011"
+        "400":
+          description: Données manquantes ou erreur de validation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Tous les champs sont requis"
+        "409":
+          description: Email déjà utilisé (Conflict)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Email déjà utilisé"
+        "500":
+          description: Erreur interne du serveur
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Erreur interne du serveur"
+
+  /login:
+    post:
+      summary: Se connecter avec un compte existant
+      description: |
+        Permet à un utilisateur de se connecter. Le token JWT est automatiquement stocké dans un cookie HttpOnly sécurisé.
+        
+        **Cookie défini:** `token` (HttpOnly, Secure en production, SameSite=lax, durée 1h)
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: Adresse email de l'utilisateur
+                  example: "john.doe@example.com"
+                password:
+                  type: string
+                  description: Mot de passe de l'utilisateur
+                  example: "Motdepasse123"
+              required:
+                - email
+                - password
+            example:
+              email: "john.doe@example.com"
+              password: "Motdepasse123"
+      responses:
+        "200":
+          description: Connexion réussie. Le token JWT est défini dans un cookie HttpOnly.
+          headers:
+            Set-Cookie:
+              description: Cookie contenant le token JWT
+              schema:
+                type: string
+                example: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...; HttpOnly; Secure; SameSite=Lax; Max-Age=3600; Path=/"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  userId:
+                    type: string
+                    description: ID de l'utilisateur connecté
+                    example: "507f1f77bcf86cd799439011"
+                  email:
+                    type: string
+                    format: email
+                    description: Email de l'utilisateur connecté
+                    example: "john.doe@example.com"
+        "400":
+          description: Données manquantes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Email et mot de passe sont requis"
+        "401":
+          description: Identifiants invalides
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Identifiants invalides"
+
+  /logout:
+    post:
+      summary: Se déconnecter
+      description: |
+        Déconnecte l'utilisateur en supprimant le cookie contenant le token JWT.
+        
+        **Cookie supprimé:** `token`
+      tags:
+        - Authentication
+      responses:
+        "200":
+          description: Déconnexion réussie. Le cookie JWT est supprimé.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Déconnexion réussie"
+
+  /lightnovels:
+    post:
+      summary: Créer un nouveau light novel
+      description: |
+        Crée un nouveau light novel dans la base de données.
+        
+        **⚠️ Requiert les privilèges administrateur.**
+      tags:
+        - Light Novels
+      security:
+        - CookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LightNovelInput"
+            example:
+              title: "Sword Art Online - Volume 1"
+              author: "Reki Kawahara"
+              price: 12.99
+              inStock: true
+              cover: "https://example.com/covers/sao1.jpg"
+              description: "Le premier volume de la série Sword Art Online"
+              genres: ["Fantasy", "Action", "Romance"]
+              releaseDate: "2009-04-10T00:00:00Z"
+      responses:
+        "201":
+          description: Light novel créé avec succès
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LightNovel"
+        "401":
+          description: Token manquant, invalide ou expiré (cookie non envoyé ou invalide)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token manquant"
+        "403":
+          description: Accès refusé (privilèges insuffisants)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Accès refusé : privilèges administrateur requis"
+        "500":
+          description: Erreur serveur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    get:
+      summary: Récupérer tous les light novels
+      description: Récupère la liste de tous les light novels
+      tags:
+        - Light Novels
+      responses:
+        "200":
+          description: Liste des light novels récupérée avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LightNovelSummary"
+        "500":
+          description: Erreur serveur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /lightnovels/search/{name}:
+    get:
+      summary: Rechercher des light novels par nom
+      description: Récupère la liste des light novels correspondant à un nom spécifique (recherche insensible à la casse)
+      tags:
+        - Light Novels
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Nom ou partie du nom du light novel à rechercher
+          schema:
+            type: string
+            example: "Slayer"
+      responses:
+        "200":
+          description: Liste des light novels correspondant à la recherche
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LightNovelSummary"
+        "500":
+          description: Erreur serveur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /lightnovels/genre/{genre}:
+    get:
+      summary: Récupérer les light novels par genre
+      description: Récupère la liste des light novels correspondant à un genre spécifique (ex: fantasy, romance, action...)
+      tags:
+        - Light Novels
+      parameters:
+        - name: genre
+          in: path
+          required: true
+          description: Nom du genre (en minuscules)
+          schema:
+            type: string
+            example: "fantasy"
+      responses:
+        "200":
+          description: Liste des light novels du genre demandé
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LightNovelSummary"
+        "500":
+          description: Erreur serveur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /lightnovels/{id}:
+    get:
+      summary: Récupérer un light novel par ID
+      description: Récupère les informations complètes d'un light novel spécifique
+      tags:
+        - Light Novels
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID du light novel
+          schema:
+            type: string
+            pattern: "^[0-9a-fA-F]{24}$"
+            example: "507f1f77bcf86cd799439011"
+      responses:
+        "200":
+          description: Light novel trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LightNovel"
+        "500":
+          description: Erreur serveur ou light novel non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      summary: Mettre à jour un light novel
+      description: |
+        Met à jour les informations d'un light novel existant.
+        
+        **⚠️ Requiert les privilèges administrateur.**
+      tags:
+        - Light Novels
+      security:
+        - CookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID du light novel à modifier
+          schema:
+            type: string
+            pattern: "^[0-9a-fA-F]{24}$"
+            example: "507f1f77bcf86cd799439011"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LightNovelInput"
+            example:
+              title: "Sword Art Online - Volume 2"
+              author: "Reki Kawahara"
+              price: 13.99
+              inStock: true
+              cover: "https://example.com/covers/sao2.jpg"
+              description: "Le deuxième volume de la série"
+              genres: ["Fantasy", "Action"]
+              releaseDate: "2009-08-10T00:00:00Z"
+      responses:
+        "200":
+          description: Light novel mis à jour avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Light novel mis à jour avec succès"
+        "401":
+          description: Token manquant, mal formé, invalide ou expiré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token invalide ou expiré"
+        "403":
+          description: Accès refusé (privilèges insuffisants)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Accès refusé : privilèges administrateur requis"
+        "500":
+          description: Erreur serveur ou light novel non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Supprimer un light novel
+      description: |
+        Supprime un light novel de la base de données.
+        
+        **⚠️ Requiert les privilèges administrateur.**
+      tags:
+        - Light Novels
+      security:
+        - CookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID du light novel à supprimer
+          schema:
+            type: string
+            pattern: "^[0-9a-fA-F]{24}$"
+            example: "507f1f77bcf86cd799439011"
+      responses:
+        "200":
+          description: Light novel supprimé avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Light novel supprimé avec succès"
+        "401":
+          description: Token manquant, mal formé, invalide ou expiré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token invalide ou expiré"
+        "403":
+          description: Accès refusé (privilèges insuffisants)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Accès refusé : privilèges administrateur requis"
+        "500":
+          description: Erreur serveur ou light novel non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /lightnovels/{id}/cover:
+    patch:
+      summary: Uploader une couverture pour un light novel
+      description: |
+        Upload une image de couverture pour un light novel existant.
+        
+        **⚠️ Requiert les privilèges administrateur.**
+      tags:
+        - Light Novels
+      security:
+        - CookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID du light novel
+          schema:
+            type: string
+            pattern: "^[0-9a-fA-F]{24}$"
+            example: "507f1f77bcf86cd799439011"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                cover:
+                  type: string
+                  format: binary
+                  description: Image de couverture (max 5Mo)
+              required:
+                - cover
+      responses:
+        "200":
+          description: Couverture uploadée avec succès
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LightNovel"
+        "400":
+          description: Aucun fichier téléchargé
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Aucun fichier téléchargé"
+        "401":
+          description: Token manquant, mal formé, invalide ou expiré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token invalide ou expiré"
+        "500":
+          description: Erreur serveur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /users/me:
+    get:
+      summary: Récupérer l'utilisateur courant
+      description: |
+        Récupère l'objet utilisateur complet de l'utilisateur authentifié.
+      tags:
+        - Users
+      security:
+        - CookieAuth: []
+      responses:
+        "200":
+          description: Utilisateur courant récupéré avec succès
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "401":
+          description: Token manquant, mal formé, invalide ou expiré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token invalide ou expiré"
+        "500":
+          description: Erreur serveur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /users:
+    get:
+      summary: Récupérer tous les utilisateurs
+      description: |
+        Récupère la liste de tous les utilisateurs.
+        
+        **⚠️ Requiert les privilèges administrateur.**
+      tags:
+        - Users
+      security:
+        - CookieAuth: []
+      responses:
+        "200":
+          description: Liste des utilisateurs récupérée avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "401":
+          description: Token manquant, mal formé, invalide ou expiré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token invalide ou expiré"
+        "403":
+          description: Accès refusé (privilèges insuffisants)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Accès refusé : privilèges administrateur requis"
+        "500":
+          description: Erreur serveur
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /users/{id}:
+    get:
+      summary: Récupérer un utilisateur par ID
+      description: |
+        Récupère les informations d'un utilisateur spécifique.
+        
+        **🔐 L'utilisateur peut uniquement accéder à son propre profil, sauf s'il est administrateur.**
+      tags:
+        - Users
+      security:
+        - CookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de l'utilisateur
+          schema:
+            type: string
+            pattern: "^[0-9a-fA-F]{24}$"
+            example: "507f1f77bcf86cd799439011"
+      responses:
+        "200":
+          description: Utilisateur trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "401":
+          description: Token manquant, mal formé, invalide ou expiré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token invalide ou expiré"
+        "403":
+          description: Accès refusé (privilèges insuffisants)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Accès refusé : privilèges insuffisants"
+        "500":
+          description: Erreur serveur ou utilisateur non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      summary: Mettre à jour un utilisateur
+      description: |
+        Met à jour les informations d'un utilisateur existant.
+        
+        **🔐 L'utilisateur peut uniquement modifier son propre profil, sauf s'il est administrateur.**
+      tags:
+        - Users
+      security:
+        - CookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de l'utilisateur à modifier
+          schema:
+            type: string
+            pattern: "^[0-9a-fA-F]{24}$"
+            example: "507f1f77bcf86cd799439011"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInput"
+            example:
+              name: "John Doe Updated"
+              email: "john.updated@example.com"
+      responses:
+        "200":
+          description: Utilisateur mis à jour avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Utilisateur mis à jour avec succès"
+        "401":
+          description: Token manquant, mal formé, invalide ou expiré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token invalide ou expiré"
+        "403":
+          description: Accès refusé (privilèges insuffisants)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Accès refusé : privilèges insuffisants"
+        "409":
+          description: Email déjà utilisé (Conflict)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Email déjà utilisé"
+        "500":
+          description: Erreur serveur ou utilisateur non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Supprimer un utilisateur
+      description: |
+        Supprime un utilisateur de la base de données.
+        
+        **🔐 L'utilisateur peut uniquement supprimer son propre compte, sauf s'il est administrateur.**
+      tags:
+        - Users
+      security:
+        - CookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de l'utilisateur à supprimer
+          schema:
+            type: string
+            pattern: "^[0-9a-fA-F]{24}$"
+            example: "507f1f77bcf86cd799439011"
+      responses:
+        "200":
+          description: Utilisateur supprimé avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Utilisateur supprimé avec succès"
+        "401":
+          description: Token manquant, mal formé, invalide ou expiré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Token invalide ou expiré"
+        "403":
+          description: Accès refusé (privilèges insuffisants)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Accès refusé : privilèges insuffisants"
+        "500":
+          description: Erreur serveur ou utilisateur non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /users/{id}/cart:
+   patch:
+     summary: Mettre à jour le panier d'un utilisateur
+     description: |
+       Ajoute ou retire une quantité d'un light novel dans le panier d'un utilisateur.
+       
+       - Si `quantity` est positif, ajoute au panier.
+       - Si `quantity` est négatif, retire du panier.
+       - Si la quantité finale atteint 0 ou moins, l'article est supprimé du panier.
+       
+       **🔒 Accès restreint : seul l'utilisateur lui-même peut modifier son panier (l'administrateur ne peut pas).**
+     tags:
+       - Users
+     security:
+       - CookieAuth: []
+     parameters:
+       - name: id
+         in: path
+         required: true
+         description: ID de l'utilisateur
+         schema:
+           type: string
+           pattern: "^[0-9a-fA-F]{24}$"
+           example: "507f1f77bcf86cd799439011"
+     requestBody:
+       required: true
+       content:
+         application/json:
+           schema:
+             type: object
+             properties:
+               lightNovelId:
+                 type: string
+                 description: ID du light novel à ajouter/modifier dans le panier
+                 example: "507f1f77bcf86cd799439011"
+               quantity:
+                 type: integer
+                 description: Quantité à ajouter (positif) ou retirer (négatif)
+                 example: 2
+             required:
+               - lightNovelId
+               - quantity
+           example:
+             lightNovelId: "507f1f77bcf86cd799439011"
+             quantity: 2
+     responses:
+       "200":
+         description: Panier mis à jour avec succès
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 message:
+                   type: string
+                   example: "Panier mis à jour avec succès"
+       "401":
+         description: Token manquant, mal formé, invalide ou expiré
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 message:
+                   type: string
+                   example: "Token invalide ou expiré"
+       "403":
+         description: Accès refusé (privilèges insuffisants)
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 error:
+                   type: string
+                   example: "Accès refusé : privilèges insuffisants"
+       "500":
+         description: Erreur serveur ou utilisateur non trouvé
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Error"
+
+  /users/{id}/history:
+   patch:
+     summary: Valider l'achat et ajouter à l'historique
+     description: |
+       Transfère le panier actuel de l'utilisateur vers son historique d'achats, puis vide le panier.
+       
+       Le panier est récupéré automatiquement depuis le profil de l'utilisateur spécifié.
+       
+       **🔒 Accès restreint : seul l'utilisateur lui-même peut valider son achat (l'administrateur ne peut pas).**
+     tags:
+       - Users
+     security:
+       - CookieAuth: []
+     parameters:
+       - name: id
+         in: path
+         required: true
+         description: ID de l'utilisateur dont le panier sera validé
+         schema:
+           type: string
+           pattern: "^[0-9a-fA-F]{24}$"
+           example: "507f1f77bcf86cd799439011"
+     requestBody:
+       required: false
+       description: Aucun body requis - le panier est récupéré automatiquement depuis le profil utilisateur
+       content:
+         application/json:
+           schema:
+             type: object
+           example: {}
+     responses:
+       "200":
+         description: Historique d'achats mis à jour avec succès
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 message:
+                   type: string
+                   example: "Historique d'achats mis à jour avec succès"
+       "401":
+         description: Token manquant, mal formé, invalide ou expiré
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 message:
+                   type: string
+                   example: "Token invalide ou expiré"
+       "403":
+         description: Accès refusé (privilèges insuffisants)
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 error:
+                   type: string
+                   example: "Accès refusé : privilèges insuffisants"
+       "500":
+         description: Erreur serveur ou utilisateur non trouvé
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Error"
+
+  /users/{id}/wishlist:
+   patch:
+     summary: Mettre à jour la liste de souhaits d'un utilisateur
+     description: |
+       Ajoute ou retire un light novel de la liste de souhaits d'un utilisateur (toggle).
+       
+       **🔒 Accès restreint : seul l'utilisateur lui-même peut modifier sa wishlist (l'administrateur ne peut pas).**
+     tags:
+       - Users
+     security:
+       - CookieAuth: []
+     parameters:
+       - name: id
+         in: path
+         required: true
+         description: ID de l'utilisateur
+         schema:
+           type: string
+           pattern: "^[0-9a-fA-F]{24}$"
+           example: "507f1f77bcf86cd799439011"
+     requestBody:
+       required: true
+       content:
+         application/json:
+           schema:
+             type: object
+             properties:
+               lightNovelId:
+                 type: string
+                 description: ID du light novel à ajouter/retirer de la liste de souhaits
+                 example: "507f1f77bcf86cd799439011"
+             required:
+               - lightNovelId
+           example:
+             lightNovelId: "507f1f77bcf86cd799439011"
+     responses:
+       "200":
+         description: Liste de souhaits mise à jour avec succès
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 message:
+                   type: string
+                   example: "Liste de souhaits mise à jour avec succès"
+       "401":
+         description: Token manquant, mal formé, invalide ou expiré
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 message:
+                   type: string
+                   example: "Token invalide ou expiré"
+       "403":
+         description: Accès refusé (privilèges insuffisants)
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 error:
+                   type: string
+                   example: "Accès refusé : privilèges insuffisants"
+       "500":
+         description: Erreur serveur, utilisateur ou light novel non trouvé
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Error"
+tags:
+  - name: Authentication
+    description: Opérations d'authentification (inscription et connexion)
+  - name: Users
+    description: Opérations liées à la gestion des utilisateurs
+  - name: Light Novels
+    description: Opérations liées à la gestion des light novels
+     
+    
