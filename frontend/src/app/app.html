@@ -1,0 +1,9 @@
+<div class="h-screen flex flex-col">
+    @if (showHeader()) {
+        <app-header></app-header>
+    }
+    <main class="flex-1">
+        <router-outlet />
+    </main>
+</div>
+<hlm-toaster position="top-center" />

@@ -1,0 +1,66 @@
+<div class="cart-page">
+    <h1 class="cart-title">
+        <ng-icon hlm name="lucideShoppingBag" size="28" />
+        My Cart
+    </h1>
+
+    @if (isLoading()) {
+        <div class="loading-state">
+            <p>Loading your cart...</p>
+        </div>
+    } @else if (isEmpty()) {
+        <div class="empty-state">
+            <ng-icon hlm name="lucideShoppingBag" size="64" class="empty-icon" />
+            <h2>Your cart is empty</h2>
+            <p>Looks like you haven't added any light novels yet.</p>
+            <a routerLink="/" hlmBtn> Browse Light Novels </a>
+        </div>
+    } @else {
+        <div class="cart-content">
+            <div class="cart-items">
+                @for (item of cartItems(); track item.lightNovel._id) {
+                    <div class="cart-item">
+                        <a [routerLink]="['/lightnovel', item.lightNovel._id]">
+                            <img
+                                [src]="item.lightNovel.cover"
+                                [alt]="item.lightNovel.title"
+                                class="item-cover"
+                            />
+                        </a>
+                        <div class="item-details">
+                            <a
+                                [routerLink]="['/lightnovel', item.lightNovel._id]"
+                                class="item-title-link"
+                            >
+                                <h3 class="item-title">{{ item.lightNovel.title }}</h3>
+                            </a>
+                            <p class="item-author">by {{ item.lightNovel.author }}</p>
+                        </div>
+                        <div class="item-price">
+                            {{ item.lightNovel.price | currency: 'EUR' }}
+                        </div>
+                        <button
+                            hlmBtn
+                            variant="destructive"
+                            size="icon"
+                            (click)="removeFromCart(item)"
+                            class="remove-btn"
+                        >
+                            <ng-icon hlm name="lucideTrash2" size="sm" />
+                        </button>
+                    </div>
+                }
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Total</span>
+                    <span class="total-price">{{ total() | currency: 'EUR' }}</span>
+                </div>
+                <button hlmBtn class="purchase-btn" (click)="completePurchase()">
+                    Complete Purchase
+                </button>
+            </div>
+        </div>
+    }
+</div>

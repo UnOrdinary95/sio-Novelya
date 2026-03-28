@@ -1,0 +1,338 @@
+@if (lightNovel(); as ln) {
+    <section class="w-full max-w-7xl mx-auto px-4 py-8">
+        <button hlmBtn variant="ghost" class="mb-6 gap-2" (click)="goBack()">
+            <ng-icon hlm size="sm" name="lucideArrowLeft" />
+            Back
+        </button>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <div class="relative group">
+                <div
+                    class="relative aspect-2/3 w-full max-w-md mx-auto lg:mx-0 overflow-hidden rounded-lg shadow-2xl"
+                >
+                    <img [src]="ln.cover" [alt]="ln.title" class="h-full w-full object-cover" />
+                    @if (isOutOfStock()) {
+                        <div class="absolute left-4 top-4 z-10">
+                            <span hlmBadge variant="destructive" class="text-sm px-3 py-1"
+                                >Out of Stock</span
+                            >
+                        </div>
+                    }
+                    <button
+                        hlmBtn
+                        size="icon"
+                        variant="secondary"
+                        class="size-10 absolute right-4 top-4 z-10 rounded-full bg-background/80 p-2 opacity-0 transition-opacity duration-300 hover:bg-background group-hover:opacity-100"
+                        (click)="toggleWishlist()"
+                    >
+                        <ng-icon
+                            hlm
+                            size="sm"
+                            name="lucideStar"
+                            [class.fill-yellow-500]="isInWishlist()"
+                            [class.text-yellow-500]="isInWishlist()"
+                        />
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <h1 class="text-3xl lg:text-4xl font-bold leading-tight">{{ ln.title }}</h1>
+                <div class="flex items-center gap-2 text-muted-foreground">
+                    <ng-icon hlm size="sm" name="lucideUser" />
+                    <span class="text-lg">{{ ln.author }}</span>
+                </div>
+
+                <p class="text-3xl font-bold text-primary">
+                    {{ ln.price | currency: 'EUR' : '' : '1.2-2' }} €
+                </p>
+                @if (ln.releaseDate) {
+                    <div class="flex items-center gap-2 text-muted-foreground">
+                        <ng-icon hlm size="sm" name="lucideCalendar" />
+                        <span>{{ ln.releaseDate | date: 'longDate' }}</span>
+                    </div>
+                }
+
+                @if (ln.genres && ln.genres.length > 0) {
+                    <div class="flex flex-wrap gap-2">
+                        @for (genre of ln.genres; track genre) {
+                            <a
+                                [routerLink]="['/genre', getGenreRoute(genre)]"
+                                hlmBadge
+                                variant="secondary"
+                                class="capitalize cursor-pointer hover:bg-secondary/80 transition-colors"
+                                >{{ genre }}</a
+                            >
+                        }
+                    </div>
+                }
+
+                <div class="space-y-2">
+                    <h2 class="text-xl font-semibold">Description</h2>
+                    <p class="text-muted-foreground leading-relaxed">{{ ln.description }}</p>
+                </div>
+                <div class="mt-4 flex gap-4">
+                    @if (isOutOfStock()) {
+                        <button
+                            disabled
+                            class="w-full sm:w-auto cursor-not-allowed rounded-md bg-muted px-8 py-3 text-base font-medium text-muted-foreground flex items-center justify-center gap-2"
+                        >
+                            <ng-icon hlm size="sm" name="lucideShoppingCart" />
+                            Out of Stock
+                        </button>
+                    } @else if (isInCart()) {
+                        <button
+                            hlmBtn
+                            variant="secondary"
+                            class="w-full sm:w-auto px-8 py-3 text-base gap-2 hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                            (click)="toggleCart()"
+                        >
+                            <ng-icon hlm size="sm" name="lucideCheck" />
+                            Added
+                        </button>
+                    } @else {
+                        <button
+                            hlmBtn
+                            class="w-full sm:w-auto px-8 py-3 text-base gap-2"
+                            [attr.aria-label]="'Add ' + ln.title + ' to cart'"
+                            (click)="toggleCart()"
+                        >
+                            <ng-icon hlm size="sm" name="lucideShoppingCart" />
+                            Add to cart
+                        </button>
+                    }
+
+                    @if (isAdmin()) {
+                        <hlm-dialog>
+                            <button
+                                hlmBtn
+                                variant="outline"
+                                brnDialogTrigger
+                                (click)="openAdminModal()"
+                                class="gap-2"
+                            >
+                                <ng-icon hlm name="lucideEdit" size="sm" />
+                                Admin
+                            </button>
+                            <hlm-dialog-content
+                                class="sm:max-w-[900px] w-full max-h-[90vh] overflow-y-auto"
+                                *brnDialogContent="let ctx"
+                            >
+                                <hlm-dialog-header>
+                                    <h3 hlmDialogTitle>Edit Lightnovel</h3>
+                                    <p hlmDialogDescription>
+                                        Update lightnovel details and stock status.
+                                    </p>
+                                </hlm-dialog-header>
+
+                                <form
+                                    [formGroup]="editForm"
+                                    class="grid grid-cols-1 lg:grid-cols-12 gap-6 py-4"
+                                >
+                                    <!-- Left Column: Cover Image -->
+                                    <div class="lg:col-span-4 flex flex-col items-center gap-4">
+                                        <div
+                                            class="relative aspect-2/3 w-full overflow-hidden rounded-lg border-2 border-dashed border-muted-foreground/25 hover:border-primary transition-colors cursor-pointer group bg-muted/50"
+                                            (click)="triggerFileInput()"
+                                        >
+                                            <img
+                                                [src]="previewCover()"
+                                                class="h-full w-full object-cover"
+                                                alt="Cover preview"
+                                            />
+                                            <div
+                                                class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity"
+                                            >
+                                                <div
+                                                    class="text-white flex flex-col items-center gap-2"
+                                                >
+                                                    <ng-icon hlm name="lucideUpload" size="lg" />
+                                                    <span class="text-sm font-medium"
+                                                        >Change Cover</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input
+                                            type="file"
+                                            id="coverInput"
+                                            class="hidden"
+                                            accept="image/*"
+                                            (change)="onFileSelected($event)"
+                                        />
+                                        <p class="text-xs text-muted-foreground text-center">
+                                            Click image to upload new cover
+                                        </p>
+                                    </div>
+
+                                    <!-- Right Column: Inputs -->
+                                    <div class="lg:col-span-8 flex flex-col gap-4">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <hlm-field>
+                                                <label hlmLabel>Title</label>
+                                                <input
+                                                    hlmInput
+                                                    formControlName="title"
+                                                    placeholder="Title"
+                                                />
+                                            </hlm-field>
+                                            <hlm-field>
+                                                <label hlmLabel>Author</label>
+                                                <input
+                                                    hlmInput
+                                                    formControlName="author"
+                                                    placeholder="Author"
+                                                />
+                                            </hlm-field>
+                                        </div>
+
+                                        <div class="grid grid-cols-2 gap-4 items-end">
+                                            <hlm-field>
+                                                <label hlmLabel>Price (€)</label>
+                                                <input
+                                                    hlmInput
+                                                    type="number"
+                                                    formControlName="price"
+                                                    placeholder="0.00"
+                                                    min="0"
+                                                    step="0.01"
+                                                />
+                                            </hlm-field>
+                                            <div class="flex items-center gap-2 pb-3">
+                                                <hlm-switch
+                                                    id="inStock"
+                                                    formControlName="inStock"
+                                                />
+                                                <label hlmLabel for="inStock">In Stock</label>
+                                            </div>
+                                        </div>
+
+                                        <hlm-field>
+                                            <label hlmLabel>Description</label>
+                                            <textarea
+                                                hlmInput
+                                                formControlName="description"
+                                                class="min-h-[100px] resize-y"
+                                            ></textarea>
+                                        </hlm-field>
+
+                                        <div class="space-y-2">
+                                            <label hlmLabel>Genres</label>
+                                            <div class="flex flex-wrap gap-2">
+                                                @for (genre of availableGenres; track genre) {
+                                                    <button
+                                                        type="button"
+                                                        hlmBadge
+                                                        [variant]="
+                                                            isGenreSelected(genre)
+                                                                ? 'default'
+                                                                : 'secondary'
+                                                        "
+                                                        class="cursor-pointer capitalize hover:opacity-80"
+                                                        (click)="toggleGenre(genre)"
+                                                    >
+                                                        {{ genre }}
+                                                    </button>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-3 flex flex-col">
+                                            <label hlmLabel>Release Date</label>
+                                            <div class="w-full">
+                                                <brn-popover>
+                                                    <button
+                                                        hlmBtn
+                                                        variant="outline"
+                                                        class="w-full pl-3 text-left font-normal"
+                                                        brnPopoverTrigger
+                                                    >
+                                                        {{
+                                                            editForm.controls.releaseDate.value
+                                                                ? (editForm.controls.releaseDate
+                                                                      .value | date: 'mediumDate')
+                                                                : 'Pick a date'
+                                                        }}
+                                                        <ng-icon
+                                                            hlm
+                                                            name="lucideChevronDown"
+                                                            class="ml-auto h-4 w-4 opacity-50"
+                                                        />
+                                                    </button>
+
+                                                    <div
+                                                        hlmPopoverContent
+                                                        *brnPopoverContent="let ctx"
+                                                        class="w-auto p-0"
+                                                    >
+                                                        <hlm-calendar
+                                                            [(date)]="
+                                                                editForm.controls.releaseDate.value!
+                                                            "
+                                                            (dateChange)="
+                                                                editForm.controls.releaseDate.setValue(
+                                                                    $event
+                                                                )
+                                                            "
+                                                            captionLayout="dropdown"
+                                                        />
+                                                    </div>
+                                                </brn-popover>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <hlm-dialog-footer class="justify-between sm:justify-between">
+                                    <hlm-alert-dialog>
+                                        <button hlmBtn variant="destructive" brnAlertDialogTrigger>
+                                            <ng-icon hlm name="lucideTrash" class="mr-2 h-4 w-4" />
+                                            Delete
+                                        </button>
+                                        <hlm-alert-dialog-content *brnAlertDialogContent="let ctx">
+                                            <hlm-alert-dialog-header>
+                                                <h3 hlmAlertDialogTitle>
+                                                    Are you absolutely sure?
+                                                </h3>
+                                                <p hlmAlertDialogDescription>
+                                                    This action cannot be undone. This will
+                                                    permanently delete this lightnovel and its cover
+                                                    image from our servers.
+                                                </p>
+                                            </hlm-alert-dialog-header>
+                                            <hlm-alert-dialog-footer>
+                                                <button hlmAlertDialogCancel (click)="ctx.close()">
+                                                    Cancel
+                                                </button>
+                                                <button
+                                                    hlmAlertDialogAction
+                                                    (click)="deleteLightNovel(); ctx.close()"
+                                                    class="bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </hlm-alert-dialog-footer>
+                                        </hlm-alert-dialog-content>
+                                    </hlm-alert-dialog>
+
+                                    <div class="flex gap-2">
+                                        <button hlmBtn variant="ghost" (click)="ctx.close()">
+                                            Cancel
+                                        </button>
+                                        <button hlmBtn (click)="updateLightNovel(ctx)">
+                                            Update
+                                        </button>
+                                    </div>
+                                </hlm-dialog-footer>
+                            </hlm-dialog-content>
+                        </hlm-dialog>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+} @else {
+    <section class="w-full max-w-7xl mx-auto px-4 py-16 flex justify-center">
+        <div class="animate-pulse text-muted-foreground">Loading...</div>
+    </section>
+}

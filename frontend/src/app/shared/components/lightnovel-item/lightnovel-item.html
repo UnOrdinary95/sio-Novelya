@@ -1,0 +1,98 @@
+<div hlmCard class="relative overflow-hidden py-0 gap-2">
+    <a
+        [routerLink]="['/lightnovel', lightNovel()._id]"
+        class="group relative h-[400px] overflow-hidden bg-muted block cursor-pointer"
+    >
+        <img
+            [src]="lightNovel().cover"
+            [alt]="lightNovel().title"
+            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+
+        @if (isOutOfStock()) {
+            <div class="absolute left-2 top-2 z-10">
+                <span hlmBadge variant="destructive">Out of Stock</span>
+            </div>
+        }
+
+        <button
+            hlmBtn
+            size="icon"
+            variant="secondary"
+            class="size-8 absolute right-2 top-2 z-10 rounded-full bg-background/80 p-2 opacity-0 transition-opacity duration-300 hover:bg-background group-hover:opacity-100"
+            (click)="$event.preventDefault(); $event.stopPropagation(); toggleWishlist()"
+        >
+            <ng-icon
+                hlm
+                size="sm"
+                name="lucideStar"
+                [class.fill-yellow-500]="isInWishlist()"
+                [class.text-yellow-500]="isInWishlist()"
+            />
+        </button>
+    </a>
+
+    <div class="px-4 py-2 flex flex-col gap-2">
+        <div class="h-24">
+            <a
+                [routerLink]="['/lightnovel', lightNovel()._id]"
+                class="line-clamp-3 text-lg font-bold hover:text-primary transition-colors cursor-pointer"
+                >{{ lightNovel().title }}</a
+            >
+        </div>
+
+        <div class="space-y-1.5">
+            <p class="truncate text-xs text-muted-foreground">{{ lightNovel().author }}</p>
+
+            <p class="text-base font-semibold">
+                {{ lightNovel().price | currency: 'EUR' : '' : '1.2-2' }} €
+            </p>
+
+            <div class="p-2">
+                @if (isOutOfStock()) {
+                    <button
+                        disabled
+                        class="w-full cursor-not-allowed rounded-none bg-muted px-4 py-2 text-sm font-medium text-muted-foreground"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="mr-2 inline"
+                        >
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path
+                                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                            ></path>
+                        </svg>
+                        Out of Stock
+                    </button>
+                } @else if (isInCart()) {
+                    <button
+                        class="w-full rounded-none bg-muted px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-destructive hover:text-destructive-foreground transition-colors flex items-center justify-center"
+                        (click)="toggleCart()"
+                    >
+                        <ng-icon hlm size="sm" name="lucideCheck" class="mr-2" />
+                        Added
+                    </button>
+                } @else {
+                    <button
+                        class="w-full rounded-none bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity duration-200 hover:opacity-90 flex items-center justify-center"
+                        [attr.aria-label]="'Add ' + lightNovel().title + ' to cart'"
+                        (click)="toggleCart()"
+                    >
+                        <ng-icon hlm size="sm" name="lucideShoppingCart" class="mr-2" />
+                        Add to cart
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

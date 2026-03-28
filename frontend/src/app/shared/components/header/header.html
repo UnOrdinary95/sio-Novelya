@@ -1,0 +1,202 @@
+<header class="flex items-center justify-between px-8 border-b">
+    <a routerLink="/">
+        <img class="w-16 h-16 cursor-pointer" src="novelya-icon.jpg" alt="Novelya - Accueil" />
+    </a>
+    <form
+        [formGroup]="searchForm"
+        (ngSubmit)="onSubmit()"
+        class="flex w-full max-w-lg items-center gap-2"
+    >
+        <input
+            class="w-full"
+            formControlName="searchQuery"
+            hlmInput
+            type="text"
+            placeholder="Search for a light novel"
+        />
+        <button hlmBtn size="icon" variant="outline" type="submit">
+            <ng-icon hlm size="sm" name="lucideSearch" />
+        </button>
+    </form>
+    <div class="flex gap-8 items-center">
+        @if (!isAuthenticated()) {
+            <button hlmBtn routerLink="/auth/register">
+                <ng-icon hlm size="sm" name="lucideUserPlus" />
+                Sign Up
+            </button>
+            <button hlmBtn routerLink="/auth/login">
+                <ng-icon hlm size="sm" name="lucideLogIn" />
+                Login
+            </button>
+        } @else {
+            <!-- Admin Create Button -->
+            @if (isAdmin()) {
+                <hlm-dialog>
+                    <button
+                        hlmBtn
+                        brnDialogTrigger
+                        size="icon"
+                        variant="outline"
+                        title="Add Light Novel"
+                    >
+                        <ng-icon hlm size="sm" name="lucidePlus" />
+                    </button>
+                    <hlm-dialog-content
+                        class="sm:max-w-4xl max-h-[90vh] overflow-y-auto"
+                        *brnDialogContent="let ctx"
+                    >
+                        <hlm-dialog-header>
+                            <h3 hlmDialogTitle>Create New Light Novel</h3>
+                            <p hlmDialogDescription>
+                                Fill in the details to add a new light novel.
+                            </p>
+                        </hlm-dialog-header>
+
+                        <form [formGroup]="createForm" class="grid grid-cols-12 gap-6 py-4">
+                            <div class="lg:col-span-4 flex flex-col items-center gap-4">
+                                <div
+                                    class="relative aspect-2/3 w-full max-w-[200px] rounded-lg overflow-hidden border-2 border-dashed border-muted-foreground/25 hover:border-primary/50 transition-colors cursor-pointer group"
+                                    (click)="triggerFileInput()"
+                                >
+                                    @if (previewCover()) {
+                                        <img
+                                            [src]="previewCover()"
+                                            class="h-full w-full object-cover"
+                                            alt="Cover preview"
+                                        />
+                                    } @else {
+                                        <div
+                                            class="h-full w-full flex items-center justify-center bg-muted"
+                                        >
+                                            <ng-icon
+                                                hlm
+                                                name="lucideUpload"
+                                                size="xl"
+                                                class="text-muted-foreground"
+                                            />
+                                        </div>
+                                    }
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    >
+                                        <div class="text-white flex flex-col items-center gap-2">
+                                            <ng-icon hlm name="lucideUpload" size="lg" />
+                                            <span class="text-sm font-medium">Upload Cover</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input
+                                    type="file"
+                                    id="createCoverInput"
+                                    class="hidden"
+                                    accept="image/*"
+                                    (change)="onFileSelected($event)"
+                                />
+                                <p class="text-xs text-muted-foreground text-center">
+                                    Click to upload cover image
+                                </p>
+                            </div>
+
+                            <!-- Right Column: Inputs -->
+                            <div class="lg:col-span-8 flex flex-col gap-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <hlm-field>
+                                        <label hlmLabel>Title *</label>
+                                        <input
+                                            hlmInput
+                                            formControlName="title"
+                                            placeholder="Title"
+                                        />
+                                    </hlm-field>
+                                    <hlm-field>
+                                        <label hlmLabel>Author *</label>
+                                        <input
+                                            hlmInput
+                                            formControlName="author"
+                                            placeholder="Author"
+                                        />
+                                    </hlm-field>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4 items-end">
+                                    <hlm-field>
+                                        <label hlmLabel>Price (€) *</label>
+                                        <input
+                                            hlmInput
+                                            type="number"
+                                            formControlName="price"
+                                            placeholder="0.00"
+                                            min="0"
+                                            step="0.01"
+                                        />
+                                    </hlm-field>
+                                    <div class="flex items-center gap-2 pb-3">
+                                        <hlm-switch id="createInStock" formControlName="inStock" />
+                                        <label hlmLabel for="createInStock">In Stock</label>
+                                    </div>
+                                </div>
+
+                                <hlm-field>
+                                    <label hlmLabel>Description</label>
+                                    <textarea
+                                        hlmInput
+                                        formControlName="description"
+                                        class="min-h-20 resize-y"
+                                    ></textarea>
+                                </hlm-field>
+
+                                <div class="space-y-2">
+                                    <label hlmLabel>Genres</label>
+                                    <div class="flex flex-wrap gap-2">
+                                        @for (genre of availableGenres; track genre) {
+                                            <button
+                                                type="button"
+                                                hlmBadge
+                                                [variant]="
+                                                    isGenreSelected(genre) ? 'default' : 'secondary'
+                                                "
+                                                class="cursor-pointer"
+                                                (click)="toggleGenre(genre)"
+                                            >
+                                                {{ genre }}
+                                            </button>
+                                        }
+                                    </div>
+                                </div>
+
+                                <hlm-field>
+                                    <label hlmLabel>Release Date</label>
+                                    <input type="date" hlmInput formControlName="releaseDate" />
+                                </hlm-field>
+                            </div>
+                        </form>
+
+                        <hlm-dialog-footer>
+                            <button hlmBtn type="button" (click)="createLightNovel(ctx)">
+                                Create Light Novel
+                            </button>
+                        </hlm-dialog-footer>
+                    </hlm-dialog-content>
+                </hlm-dialog>
+            }
+
+            <a routerLink="/cart" class="cart-container">
+                <ng-icon hlm name="lucideShoppingCart" />
+                @if (cartLength() > 0) {
+                    <span class="cart-badge">{{ cartLength() }}</span>
+                }
+            </a>
+            <a routerLink="/profile">
+                <hlm-avatar variant="medium">
+                    <span class="bg-primary text-primary-foreground" hlmAvatarFallback>
+                        {{ userInitials() }}
+                    </span>
+                </hlm-avatar>
+            </a>
+            <button hlmBtn (click)="logout()">
+                <ng-icon hlm size="sm" name="lucideLogOut" />
+                Logout
+            </button>
+        }
+    </div>
+</header>

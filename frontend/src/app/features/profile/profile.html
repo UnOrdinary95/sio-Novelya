@@ -1,0 +1,507 @@
+<div class="container mx-auto py-10 px-4">
+    <!-- Header Section -->
+    <div class="flex items-center gap-6 mb-10">
+        <hlm-avatar variant="large" class="w-24 h-24 text-2xl">
+            <span class="bg-primary text-primary-foreground text-3xl" hlmAvatarFallback>
+                {{ initials() }}
+            </span>
+        </hlm-avatar>
+
+        <div class="flex-1">
+            <h1 class="text-3xl font-bold">{{ user()?.name }}</h1>
+            <p class="text-muted-foreground">{{ user()?.email }}</p>
+        </div>
+
+        <!-- Admin Dialog -->
+        @if (user()?.isAdmin) {
+            <hlm-dialog>
+                <button
+                    brnDialogTrigger
+                    hlmBtn
+                    class="bg-transparent border-none text-foreground hover:bg-transparent shadow-none"
+                    size="icon"
+                    (click)="loadAllUsers()"
+                >
+                    <ng-icon hlm size="lg" name="lucideShield" />
+                </button>
+                <hlm-dialog-content
+                    class="sm:max-w-[500px] flex flex-col max-h-[80vh]"
+                    *brnDialogContent="let adminCtx"
+                >
+                    <hlm-dialog-header>
+                        <h3 hlmDialogTitle>User Management</h3>
+                        <p hlmDialogDescription>Click on a user to edit their information.</p>
+                    </hlm-dialog-header>
+
+                    <div class="flex-1 overflow-y-auto pr-2 -mr-2">
+                        @if (isAdminLoading() && allUsers().length === 0) {
+                            <div class="flex justify-center p-4">
+                                <span class="text-muted-foreground">Loading users...</span>
+                            </div>
+                        } @else {
+                            <div class="flex flex-col gap-2">
+                                @for (u of allUsers(); track u._id) {
+                                    <hlm-dialog>
+                                        <button
+                                            class="flex w-full text-left items-center gap-4 p-3 border rounded-lg hover:bg-muted/50 cursor-pointer transition-colors"
+                                            brnDialogTrigger
+                                            (click)="openUserEditDialog(u)"
+                                        >
+                                            <hlm-avatar
+                                                variant="medium"
+                                                class="w-10 h-10 text-sm shrink-0"
+                                            >
+                                                <span
+                                                    class="bg-primary text-primary-foreground"
+                                                    hlmAvatarFallback
+                                                >
+                                                    {{ getUserInitials(u.name) }}
+                                                </span>
+                                            </hlm-avatar>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="font-medium truncate">{{ u.name }}</p>
+                                                <p class="text-sm text-muted-foreground truncate">
+                                                    {{ u.email }}
+                                                </p>
+                                            </div>
+                                        </button>
+
+                                        <!-- User Edit Dialog -->
+                                        <hlm-dialog-content
+                                            class="sm:max-w-[425px]"
+                                            *brnDialogContent="let editCtx"
+                                        >
+                                            <hlm-dialog-header>
+                                                <h3 hlmDialogTitle>Edit User</h3>
+                                                <p hlmDialogDescription>
+                                                    Modify user information below. Click update when
+                                                    you're done.
+                                                </p>
+                                            </hlm-dialog-header>
+
+                                            <form
+                                                [formGroup]="adminEditForm"
+                                                (ngSubmit)="updateUser(); editCtx.close()"
+                                                class="grid gap-4 py-4"
+                                            >
+                                                @if (adminErrorMessage()) {
+                                                    <p class="text-red-500 text-sm text-center">
+                                                        {{ adminErrorMessage() }}
+                                                    </p>
+                                                }
+                                                <hlm-field-group>
+                                                    <hlm-field>
+                                                        <label hlmFieldLabel for="admin-name"
+                                                            >Name</label
+                                                        >
+                                                        <input
+                                                            hlmInput
+                                                            id="admin-name"
+                                                            formControlName="name"
+                                                            placeholder="Name"
+                                                        />
+                                                        @if (
+                                                            adminEditForm.get('name')?.invalid &&
+                                                            adminEditForm.get('name')?.touched
+                                                        ) {
+                                                            <p class="text-red-500 text-sm">
+                                                                Name must contain only letters,
+                                                                hyphens, and underscores.
+                                                            </p>
+                                                        }
+                                                    </hlm-field>
+
+                                                    <hlm-field>
+                                                        <label hlmFieldLabel for="admin-email"
+                                                            >Email</label
+                                                        >
+                                                        <input
+                                                            hlmInput
+                                                            id="admin-email"
+                                                            formControlName="email"
+                                                            type="email"
+                                                            placeholder="Email"
+                                                        />
+                                                        @if (
+                                                            adminEditForm.get('email')?.invalid &&
+                                                            adminEditForm.get('email')?.touched
+                                                        ) {
+                                                            <p class="text-red-500 text-sm">
+                                                                Please enter a valid email address.
+                                                            </p>
+                                                        }
+                                                    </hlm-field>
+                                                </hlm-field-group>
+
+                                                <hlm-dialog-footer
+                                                    class="sm:justify-between items-center mt-2"
+                                                >
+                                                    <!-- Delete Account Alert -->
+                                                    <hlm-alert-dialog>
+                                                        <button
+                                                            hlmBtn
+                                                            variant="destructive"
+                                                            brnAlertDialogTrigger
+                                                            type="button"
+                                                        >
+                                                            Delete Account
+                                                        </button>
+                                                        <hlm-alert-dialog-content
+                                                            *brnAlertDialogContent="let deleteCtx"
+                                                        >
+                                                            <hlm-alert-dialog-header>
+                                                                <h3 hlmAlertDialogTitle>
+                                                                    Are you absolutely sure?
+                                                                </h3>
+                                                                <p hlmAlertDialogDescription>
+                                                                    This action cannot be undone.
+                                                                    This will permanently delete
+                                                                    this user's account and remove
+                                                                    their data from our servers.
+                                                                </p>
+                                                            </hlm-alert-dialog-header>
+                                                            <hlm-alert-dialog-footer>
+                                                                <button
+                                                                    hlmAlertDialogCancel
+                                                                    (click)="deleteCtx.close()"
+                                                                >
+                                                                    Cancel
+                                                                </button>
+                                                                <button
+                                                                    hlmAlertDialogAction
+                                                                    (click)="
+                                                                        deleteUser();
+                                                                        deleteCtx.close();
+                                                                        editCtx.close()
+                                                                    "
+                                                                    class="bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
+                                                                >
+                                                                    Delete Account
+                                                                </button>
+                                                            </hlm-alert-dialog-footer>
+                                                        </hlm-alert-dialog-content>
+                                                    </hlm-alert-dialog>
+
+                                                    <button
+                                                        hlmBtn
+                                                        type="submit"
+                                                        [disabled]="
+                                                            isAdminLoading() ||
+                                                            adminEditForm.invalid
+                                                        "
+                                                    >
+                                                        {{
+                                                            isAdminLoading()
+                                                                ? 'Updating...'
+                                                                : 'Update'
+                                                        }}
+                                                    </button>
+                                                </hlm-dialog-footer>
+                                            </form>
+                                        </hlm-dialog-content>
+                                    </hlm-dialog>
+                                } @empty {
+                                    <p class="text-muted-foreground text-center py-4">
+                                        No users found.
+                                    </p>
+                                }
+                            </div>
+                        }
+                    </div>
+                </hlm-dialog-content>
+            </hlm-dialog>
+        }
+
+        <!-- Settings Dialog -->
+        <hlm-dialog>
+            <button
+                brnDialogTrigger
+                hlmBtn
+                class="bg-transparent border-none text-foreground hover:bg-transparent shadow-none"
+                size="icon"
+            >
+                <ng-icon hlm size="lg" name="lucideSettings" />
+            </button>
+            <hlm-dialog-content class="sm:max-w-[425px]" *brnDialogContent="let settingsCtx">
+                <hlm-dialog-header>
+                    <h3 hlmDialogTitle>Edit Profile</h3>
+                    <p hlmDialogDescription>
+                        Make changes to your profile here. Click save when you're done.
+                    </p>
+                </hlm-dialog-header>
+
+                <form
+                    [formGroup]="settingsForm"
+                    (ngSubmit)="handleSubmit()"
+                    class="grid gap-4 py-4"
+                >
+                    @if (errorMessage()) {
+                        <p class="text-red-500 text-sm text-center">{{ errorMessage() }}</p>
+                    }
+                    <hlm-field-group>
+                        <hlm-field>
+                            <label hlmFieldLabel for="name">Name</label>
+                            <input hlmInput id="name" formControlName="name" placeholder="Name" />
+                            @if (
+                                settingsForm.get('name')?.invalid &&
+                                settingsForm.get('name')?.touched
+                            ) {
+                                <p class="text-red-500 text-sm">
+                                    Name must contain only letters, hyphens, and underscores.
+                                </p>
+                            }
+                        </hlm-field>
+
+                        <hlm-field>
+                            <label hlmFieldLabel for="email">Email</label>
+                            <input
+                                hlmInput
+                                id="email"
+                                formControlName="email"
+                                type="email"
+                                placeholder="Email"
+                            />
+                            @if (
+                                settingsForm.get('email')?.invalid &&
+                                settingsForm.get('email')?.touched
+                            ) {
+                                <p class="text-red-500 text-sm">
+                                    Please enter a valid email address.
+                                </p>
+                            }
+                        </hlm-field>
+
+                        <hlm-field>
+                            <label hlmFieldLabel for="password">Password (Optional)</label>
+                            <input
+                                hlmInput
+                                id="password"
+                                type="password"
+                                formControlName="password"
+                                placeholder="New password"
+                            />
+                            <p class="text-muted-foreground text-xs mt-1">
+                                Minimum 8 characters, including at least one uppercase and one
+                                lowercase letter.
+                            </p>
+                            @if (
+                                settingsForm.get('password')?.invalid &&
+                                settingsForm.get('password')?.touched
+                            ) {
+                                <p class="text-red-500 text-sm">
+                                    Password does not meet the requirements.
+                                </p>
+                            }
+                        </hlm-field>
+                    </hlm-field-group>
+
+                    <hlm-dialog-footer class="sm:justify-between items-center mt-2">
+                        <!-- Delete Account Alert -->
+                        <hlm-alert-dialog>
+                            <button
+                                hlmBtn
+                                variant="destructive"
+                                brnAlertDialogTrigger
+                                type="button"
+                            >
+                                Delete Account
+                            </button>
+                            <hlm-alert-dialog-content *brnAlertDialogContent="let ctx">
+                                <hlm-alert-dialog-header>
+                                    <h3 hlmAlertDialogTitle>Are you absolutely sure?</h3>
+                                    <p hlmAlertDialogDescription>
+                                        This action cannot be undone. This will permanently delete
+                                        your account and remove your data from our servers.
+                                    </p>
+                                </hlm-alert-dialog-header>
+                                <hlm-alert-dialog-footer>
+                                    <button hlmAlertDialogCancel (click)="ctx.close()">
+                                        Cancel
+                                    </button>
+                                    <button
+                                        hlmAlertDialogAction
+                                        (click)="deleteAccount(); ctx.close()"
+                                        class="bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
+                                    >
+                                        Delete Account
+                                    </button>
+                                </hlm-alert-dialog-footer>
+                            </hlm-alert-dialog-content>
+                        </hlm-alert-dialog>
+
+                        <button
+                            hlmBtn
+                            type="submit"
+                            [disabled]="isLoading() || settingsForm.invalid"
+                        >
+                            {{ isLoading() ? 'Updating...' : 'Update' }}
+                        </button>
+                    </hlm-dialog-footer>
+                </form>
+            </hlm-dialog-content>
+        </hlm-dialog>
+    </div>
+
+    <!-- Tabs Section -->
+    <hlm-tabs tab="wishlist" class="w-full">
+        <hlm-tabs-list class="w-full justify-start mb-6">
+            <button
+                hlmTabsTrigger="wishlist"
+                class="data-[state=active]:bg-pink-500! data-[state=active]:text-black!"
+            >
+                Wishlist
+            </button>
+            <button
+                hlmTabsTrigger="history"
+                class="data-[state=active]:bg-pink-500! data-[state=active]:text-black!"
+            >
+                History
+            </button>
+        </hlm-tabs-list>
+
+        <!-- Wishlist Tab -->
+        <div hlmTabsContent="wishlist">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                @for (ln of wishlistLNs(); track ln._id) {
+                    <div
+                        class="relative group cursor-pointer border rounded-md overflow-hidden"
+                        [routerLink]="['/lightnovel', ln._id]"
+                    >
+                        <div class="aspect-2/3 overflow-hidden mb-2">
+                            <img
+                                [src]="ln.cover"
+                                [alt]="ln.title"
+                                class="object-cover w-full h-full transition-transform hover:scale-105"
+                            />
+                        </div>
+                        <div class="p-2">
+                            <h3 class="font-bold truncate">{{ ln.title }}</h3>
+                            <p class="text-sm text-muted-foreground truncate">{{ ln.author }}</p>
+                            <p class="font-semibold mt-1">
+                                {{ ln.price | currency: 'EUR' : 'symbol' : '1.2-2' }}
+                            </p>
+                        </div>
+
+                        <button
+                            hlmBtn
+                            variant="secondary"
+                            size="icon"
+                            class="size-8 absolute top-2 right-2 rounded-full bg-background/80 p-2 hover:bg-background"
+                            (click)="toggleWishlist($event, ln._id)"
+                        >
+                            <ng-icon
+                                hlm
+                                size="sm"
+                                name="lucideStar"
+                                class="fill-yellow-400 text-yellow-400"
+                            />
+                        </button>
+                    </div>
+                } @empty {
+                    <p class="text-muted-foreground col-span-full text-center py-10">
+                        Your wishlist is empty.
+                    </p>
+                }
+            </div>
+        </div>
+
+        <!-- History Content -->
+        <div hlmTabsContent="history">
+            <div class="flex flex-col gap-4">
+                @for (enriched of enrichedHistory(); track enriched.original.purchaseDate) {
+                    <hlm-dialog>
+                        <button
+                            class="flex w-full text-left items-center gap-4 p-4 border rounded-lg hover:bg-muted/50 cursor-pointer transition-colors"
+                            brnDialogTrigger
+                            (click)="openHistoryDialog(enriched.original)"
+                        >
+                            <!-- Display first item cover or placeholder -->
+                            <div class="w-16 h-24 bg-muted rounded overflow-hidden shrink-0">
+                                @if (enriched.firstItemCover) {
+                                    <img
+                                        [src]="enriched.firstItemCover"
+                                        class="w-full h-full object-cover"
+                                    />
+                                }
+                            </div>
+
+                            <div>
+                                <p class="font-medium">
+                                    Paid on {{ enriched.original.purchaseDate | date: 'longDate' }}
+                                </p>
+                                <p class="text-sm text-muted-foreground">
+                                    {{ enriched.original.cart.length }} items
+                                </p>
+                            </div>
+                        </button>
+
+                        <!-- History Details Dialog Content -->
+                        <hlm-dialog-content
+                            class="sm:max-w-[600px] flex flex-col h-[80vh]"
+                            *brnDialogContent="let ctx"
+                        >
+                            <hlm-dialog-header>
+                                <h3 hlmDialogTitle>Purchase Details</h3>
+                                <p hlmDialogDescription>
+                                    Transaction date:
+                                    {{ selectedHistoryItem()?.purchaseDate | date: 'mediumDate' }}
+                                    {{ selectedHistoryItem()?.purchaseDate | date: 'shortTime' }}
+                                </p>
+                            </hlm-dialog-header>
+
+                            <div class="flex-1 overflow-y-auto pr-4 -mr-4">
+                                @if (selectedHistoryDetails().length > 0) {
+                                    <div class="flex flex-col gap-4">
+                                        @for (item of selectedHistoryDetails(); track $index) {
+                                            <div
+                                                class="flex items-center gap-4 border-b pb-4 last:border-0 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors"
+                                                [routerLink]="['/lightnovel', item.lightNovel._id]"
+                                                (click)="ctx.close()"
+                                            >
+                                                <img
+                                                    [src]="item.lightNovel.cover"
+                                                    class="w-16 h-24 object-cover rounded"
+                                                />
+                                                <div class="flex-1">
+                                                    <h4 class="font-bold">
+                                                        {{ item.lightNovel.title }}
+                                                    </h4>
+                                                    <p class="text-sm text-muted-foreground">
+                                                        {{ item.lightNovel.author }}
+                                                    </p>
+                                                </div>
+                                                <div class="font-semibold">
+                                                    {{
+                                                        item.lightNovel.price
+                                                            | currency: 'EUR' : 'symbol' : '1.2-2'
+                                                    }}
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                } @else {
+                                    <div class="flex justify-center p-4">
+                                        <span class="loading-spinner">Loading details...</span>
+                                    </div>
+                                }
+                            </div>
+
+                            <hlm-dialog-footer
+                                class="sm:justify-between items-center mt-auto border-t pt-4"
+                            >
+                                <div class="text-lg font-bold">
+                                    Total:
+                                    {{ historyTotal() | currency: 'EUR' : 'symbol' : '1.2-2' }}
+                                </div>
+                            </hlm-dialog-footer>
+                        </hlm-dialog-content>
+                    </hlm-dialog>
+                } @empty {
+                    <p class="text-muted-foreground text-center py-10">
+                        No purchase history found.
+                    </p>
+                }
+            </div>
+        </div>
+    </hlm-tabs>
+</div>

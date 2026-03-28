@@ -1,0 +1,17 @@
+<div
+    hlmCard
+    class="max-w-60 max-h-36 py-0 overflow-hidden border-none cursor-pointer relative group"
+    (mouseover)="onMouseOver()"
+    (click)="onClick()"
+>
+    <img
+        [ngSrc]="image()"
+        alt="{{ genreName() }}"
+        width="240"
+        height="144"
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 opacity-50"
+    />
+    <div class="absolute inset-0 flex items-center justify-center">
+        <h3 class="text-xl font-bold text-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{{ genreName() }}</h3>
+    </div>
+</div>

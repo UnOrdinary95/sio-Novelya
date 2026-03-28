@@ -1,0 +1,20 @@
+<div
+    class="flex flex-col gap-10 items-center justify-center relative bg-cover bg-center bg-no-repeat"
+    [style.height]="'calc(100vh - 64px)'"
+    [style.backgroundImage]="'url(' + currentUrl() + ')'"
+>
+    <div class="absolute inset-0 bg-black/65"></div>
+    <div class="flex flex-col items-center gap-6 z-10 text-center">
+        <p class="text-lg text-white/90 max-w-md">Your online light novel shop.</p>
+        <div class="flex items-center gap-2">
+            <ng-icon hlm name="lucideBookOpen" size="25" />
+            <h2 class="font-extrabold text-2xl text-white">Explore by genres</h2>
+        </div>
+    </div>
+    <app-genre-list (genreHovered)="updateBackground($event)"></app-genre-list>
+</div>
+
+<section class="w-full max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold mb-8">Full Catalog</h2>
+    <app-lightnovel-list [lightNovels]="lightNovels()"></app-lightnovel-list>
+</section>

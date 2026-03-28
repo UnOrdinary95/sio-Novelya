@@ -1,0 +1,117 @@
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css';
+
+@import '@angular/cdk/overlay-prebuilt.css';
+
+/* You can add global styles to this file, and also import other style files */
+
+@import '@spartan-ng/brain/hlm-tailwind-preset.css';
+
+@font-face {
+    font-family: 'HussarBoldOutline';
+    src: url('/font/HussarBoldOutline.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    color-scheme: light;
+
+    --font-sans: Outfit, ui-sans-serif, sans-serif, system-ui;
+    --font-serif: serif;
+    --font-mono: Fira Code, ui-monospace, monospace;
+
+    --radius: 0rem;
+    --background: oklch(0.994 0 0);
+    --foreground: oklch(0.2178 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.2178 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.2178 0 0);
+    --primary: oklch(0.6921 0.2196 358.5581);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.9551 0 0);
+    --secondary-foreground: oklch(0.2178 0 0);
+    --muted: oklch(0.9551 0 0);
+    --muted-foreground: oklch(0.5278 0 0);
+    --accent: oklch(0.6921 0.2196 358.5581);
+    --accent-foreground: oklch(0.2178 0 0);
+    --destructive: oklch(0.6368 0.2078 25.3313);
+    --destructive-foreground: oklch(1 0 0);
+    --border: oklch(0.9067 0 0);
+    --input: oklch(0.9551 0 0);
+    --ring: oklch(0.6921 0.2196 358.5581);
+    --chart-1: oklch(0.6921 0.2196 358.5581);
+    --chart-2: oklch(0.7811 0.1532 349.6649);
+    --chart-3: oklch(0.8686 0.0875 345.9805);
+    --chart-4: oklch(0.929 0.0457 344.1479);
+    --chart-5: oklch(0.9532 0.0301 342.62);
+    --sidebar: oklch(0.9791 0 0);
+    --sidebar-foreground: oklch(0.2178 0 0);
+    --sidebar-primary: oklch(0.6921 0.2196 358.5581);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.6921 0.2196 358.5581);
+    --sidebar-accent-foreground: oklch(0.2178 0 0);
+    --sidebar-border: oklch(0.9067 0 0);
+    --sidebar-ring: oklch(0.6921 0.2196 358.5581);
+
+    --tracking-normal: 0.05em;
+}
+
+:root.dark {
+    color-scheme: dark;
+
+    --background: oklch(0.173 0 0);
+    --foreground: oklch(0.937 0 0);
+    --card: oklch(0.2178 0 0);
+    --card-foreground: oklch(0.937 0 0);
+    --popover: oklch(0.2178 0 0);
+    --popover-foreground: oklch(0.937 0 0);
+    --primary: oklch(0.6921 0.2196 358.5581);
+    --primary-foreground: oklch(0.173 0 0);
+    --secondary: oklch(0.285 0 0);
+    --secondary-foreground: oklch(0.937 0 0);
+    --muted: oklch(0.285 0 0);
+    --muted-foreground: oklch(0.7572 0 0);
+    --accent: oklch(0.6921 0.2196 358.5581);
+    --accent-foreground: oklch(0.937 0 0);
+    --destructive: oklch(0.6368 0.2078 25.3313);
+    --destructive-foreground: oklch(1 0 0);
+    --border: oklch(0.3904 0 0);
+    --input: oklch(0.285 0 0);
+    --ring: oklch(0.6921 0.2196 358.5581);
+    --chart-1: oklch(0.6921 0.2196 358.5581);
+    --chart-2: oklch(0.7811 0.1532 349.6649);
+    --chart-3: oklch(0.8686 0.0875 345.9805);
+    --chart-4: oklch(0.929 0.0457 344.1479);
+    --chart-5: oklch(0.9532 0.0301 342.62);
+    --sidebar: oklch(0.1957 0 0);
+    --sidebar-foreground: oklch(0.937 0 0);
+    --sidebar-primary: oklch(0.6921 0.2196 358.5581);
+    --sidebar-primary-foreground: oklch(0.173 0 0);
+    --sidebar-accent: oklch(0.6921 0.2196 358.5581);
+    --sidebar-accent-foreground: oklch(0.937 0 0);
+    --sidebar-border: oklch(0.3904 0 0);
+    --sidebar-ring: oklch(0.6921 0.2196 358.5581);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+html,
+body {
+    min-height: 100%;
+    background: var(--background);
+}
+
+button {
+    cursor: pointer;
+}

@@ -1,0 +1,80 @@
+<form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+    <hlm-field-group>
+        <div class="flex flex-col items-center gap-1 text-center">
+            <h1 class="text-2xl font-bold">Create an account</h1>
+            <p class="text-muted-foreground text-sm text-balance">
+                Let's get started. Fill in the details below to create your account.
+            </p>
+            @if (errorMessage()) {
+                <p class="text-red-500 text-sm">{{ errorMessage() }}</p>
+            }
+        </div>
+
+        <hlm-field>
+            <label hlmFieldLabel for="name">Name</label>
+            <input hlmInput type="text" placeholder="John Doe" formControlName="name" required />
+            <p class="text-muted-foreground text-sm">
+                Name must contain only letters, hyphens, and underscores.
+            </p>
+            @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+                <p class="text-red-500 text-sm">Name is required and must be valid.</p>
+            }
+        </hlm-field>
+
+        <hlm-field>
+            <label hlmFieldLabel for="email">Email</label>
+            <input
+                hlmInput
+                type="email"
+                placeholder="john.doe@example.com"
+                formControlName="email"
+                required
+            />
+            @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+                <p class="text-red-500 text-sm">Please enter a valid email address.</p>
+            }
+        </hlm-field>
+
+        <hlm-field>
+            <label hlmFieldLabel for="password">Password</label>
+            <input
+                hlmInput
+                type="password"
+                placeholder="Louvre"
+                formControlName="password"
+                required
+            />
+            <p class="text-muted-foreground text-sm">
+                Minimum 8 characters, including at least one uppercase and one lowercase letter.
+            </p>
+            @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+                <p class="text-red-500 text-sm">Password does not meet the requirements.</p>
+            }
+        </hlm-field>
+
+        <div class="flex flex-col gap-1">
+            <div class="flex gap-2 items-center">
+                <hlm-checkbox id="terms" required="true" formControlName="terms" />
+                <label hlmFieldLabel for="terms">
+                    I agree to the
+                    <a href="https://github.com/UnOrdinary95" class="text-primary underline">
+                        Terms of Service
+                    </a>
+                </label>
+            </div>
+
+            @if (registerForm.get('terms')?.invalid && registerForm.get('terms')?.touched) {
+                <p class="text-red-500 text-sm">You must accept the Terms of Service to proceed.</p>
+            }
+        </div>
+
+        <button hlmBtn type="submit" [disabled]="isLoading()">
+            {{ isLoading() ? 'Creating account...' : 'Sign up' }}
+        </button>
+
+        <p class="text-muted-foreground text-sm text-balance text-center">
+            Already have an account?
+            <a routerLink="/auth/login" class="text-primary underline">Log in</a>
+        </p>
+    </hlm-field-group>
+</form>

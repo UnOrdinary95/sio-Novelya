@@ -1,0 +1,11 @@
+<div class="grid grid-cols-5 gap-10 w-fit mx-auto">
+    @for (genre of genres; track genre.name) {
+        <app-genre-card
+            [image]="genre.image"
+            [genreName]="genre.name"
+            [genreRoute]="genre.route"
+            [class]="$last ? 'col-start-3' : ''"
+            (hovered)="onGenreHover($event)"
+        ></app-genre-card>
+    }
+</div>
