@@ -145,8 +145,8 @@ importers:
         specifier: '>=32.0.0 <34.0.0'
         version: 33.2.0
       '@spartan-ng/brain':
-        specifier: ^0.0.1-alpha.570
-        version: 0.0.1-alpha.656(@angular/cdk@20.0.0(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/forms@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.2.2)
+        specifier: 0.0.1-alpha.570
+        version: 0.0.1-alpha.570(@angular/cdk@20.0.0(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/forms@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.2.2)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
@@ -176,8 +176,8 @@ importers:
         specifier: ^21.0.3
         version: 21.2.6(@angular/compiler@21.2.6)(typescript@5.9.3)
       '@spartan-ng/cli':
-        specifier: ^0.0.1-alpha.570
-        version: 0.0.1-alpha.656(34495b07607425c00ca569d27dfde6b7)
+        specifier: 0.0.1-alpha.570
+        version: 0.0.1-alpha.570(34495b07607425c00ca569d27dfde6b7)
       '@tailwindcss/postcss':
         specifier: ^4.1.12
         version: 4.2.2
@@ -277,8 +277,8 @@ packages:
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     hasBin: true
 
-  '@angular-devkit/core@20.3.9':
-    resolution: {integrity: sha512-bXsAGIUb4p60x548YmvnMvjwd3FwWz6re1uTM7dV0XH8nQn3XMhOQ3Q3sAckzJHxkDuaRhB3K/a4kupoOmVfTQ==}
+  '@angular-devkit/core@20.0.6':
+    resolution: {integrity: sha512-kalYqR/soAMPgYdaKJL3iOMCubiq0gljpbQFzS+Uey/P1nn+MDY8V0zzc9cBNhKKkAxCXPN/NIEKC7ICOfaJbg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
       chokidar: ^4.0.0
@@ -295,8 +295,8 @@ packages:
       chokidar:
         optional: true
 
-  '@angular-devkit/schematics@20.3.9':
-    resolution: {integrity: sha512-oaIjAKPmHMZBTC0met5M7dbXBeZnCNwmHacT/kBHNVBAz/NI95fuAfb2P0Jxt7gWdQXejDSxWp0tL+sZIyO0xw==}
+  '@angular-devkit/schematics@20.0.6':
+    resolution: {integrity: sha512-4YjAJVN6bPL7d46Jb4Rok703av5UHlHQBhfJfkPVrUV45mwUboBhBrl0WzlKuUN6JhE44xFO48LApxdT1rbYRA==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
   '@angular-devkit/schematics@21.2.5':
@@ -2669,8 +2669,8 @@ packages:
   '@scarf/scarf@1.4.0':
     resolution: {integrity: sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==}
 
-  '@schematics/angular@20.3.9':
-    resolution: {integrity: sha512-XkgTwGhhrx+MVi2+TFO32d6Es5Uezzx7Y7B/e2ulDlj08bizxQj+9wkeLt5+bR8JWODHpEntZn/Xd5WvXnODGA==}
+  '@schematics/angular@20.0.6':
+    resolution: {integrity: sha512-aAGHku+Aka8gNLBdgGOnofx2Do8bQoZbzfA4OGtrxrYR8C2wrES3fKmFbQO2aRyUjzX31w2oSOy9BNN/L3gnIA==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
   '@schematics/angular@21.2.5':
@@ -2704,8 +2704,8 @@ packages:
   '@sinclair/typebox@0.34.49':
     resolution: {integrity: sha512-brySQQs7Jtn0joV8Xh9ZV/hZb9Ozb0pmazDIASBkYKCjXrXU3mpcFahmK/z4YDhGkQvP9mWJbVyahdtU5wQA+A==}
 
-  '@spartan-ng/brain@0.0.1-alpha.656':
-    resolution: {integrity: sha512-RK+eT+O64ML/e70WpSbcuzKyELpK1+7BDI/QCpoYzni3M01t2PWf2TA4P3u6CVJnY5z8T9zU4t812VTKACrcIw==}
+  '@spartan-ng/brain@0.0.1-alpha.570':
+    resolution: {integrity: sha512-uaGLhxiRxDjJ0Wf/yxGK391o2xpSLtzaULHZhFyjGXPSaMys6PkY1szssCpJ3zpoWWTPwXxkaltQ2REi7NbM2g==}
     peerDependencies:
       '@angular/cdk': '>=20.0.0 <22.0.0'
       '@angular/common': '>=20.0.0 <22.0.0'
@@ -2719,8 +2719,8 @@ packages:
       luxon:
         optional: true
 
-  '@spartan-ng/cli@0.0.1-alpha.656':
-    resolution: {integrity: sha512-g1m6eVSQtd63mkyOIZ9kdVfqF4J01gY56qru5XlxvnNEIUnfAiRuR26sVH88zIW9AQWshKzWG/wCQ2GuQr3UuA==}
+  '@spartan-ng/cli@0.0.1-alpha.570':
+    resolution: {integrity: sha512-O/YPUah2XM01DcPBru6ZSuW1pUtuZkqkgXRmUv9Wb93rXBBrU4Ambh/9KOt+2CtrVXebmaVq0lZQlrQqdAkiKA==}
     peerDependencies:
       tslib: ^2.3.0
 
@@ -5598,10 +5598,6 @@ packages:
     resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
     engines: {node: '>=12'}
 
-  picomatch@4.0.3:
-    resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
-    engines: {node: '>=12'}
-
   picomatch@4.0.4:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
@@ -6405,6 +6401,10 @@ packages:
   source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+
+  source-map@0.7.4:
+    resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
+    engines: {node: '>= 8'}
 
   source-map@0.7.6:
     resolution: {integrity: sha512-i5uvt8C3ikiWeNZSVZNWcfZPItFQOsYTUAOkcUPGd8DqDy1uOUikjt5dG+uRlwyvR108Fb9DOd4GvXfT0N2/uQ==}
@@ -7287,14 +7287,14 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-devkit/core@20.3.9(chokidar@5.0.0)':
+  '@angular-devkit/core@20.0.6(chokidar@5.0.0)':
     dependencies:
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
       jsonc-parser: 3.3.1
-      picomatch: 4.0.3
+      picomatch: 4.0.2
       rxjs: 7.8.2
-      source-map: 0.7.6
+      source-map: 0.7.4
     optionalDependencies:
       chokidar: 5.0.0
 
@@ -7309,9 +7309,9 @@ snapshots:
     optionalDependencies:
       chokidar: 5.0.0
 
-  '@angular-devkit/schematics@20.3.9(chokidar@5.0.0)':
+  '@angular-devkit/schematics@20.0.6(chokidar@5.0.0)':
     dependencies:
-      '@angular-devkit/core': 20.3.9(chokidar@5.0.0)
+      '@angular-devkit/core': 20.0.6(chokidar@5.0.0)
       jsonc-parser: 3.3.1
       magic-string: 0.30.17
       ora: 8.2.0
@@ -9246,7 +9246,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nx/angular@22.6.3(320664db0ad50e708cd5bdd60fb60104)':
+  '@nx/angular@22.6.3(2ad337726ce3340e0dd55c97a828380c)':
     dependencies:
       '@angular-devkit/core': 21.2.5(chokidar@5.0.0)
       '@angular-devkit/schematics': 21.2.5(chokidar@5.0.0)
@@ -9259,7 +9259,7 @@ snapshots:
       '@nx/webpack': 22.6.3(@babel/traverse@7.29.0)(@rspack/core@1.6.8)(lightningcss@1.32.0)(nx@22.6.3)(typescript@5.9.3)
       '@nx/workspace': 22.6.3
       '@phenomnomnominal/tsquery': 6.1.4(typescript@5.9.3)
-      '@schematics/angular': 20.3.9(chokidar@5.0.0)
+      '@schematics/angular': 20.0.6(chokidar@5.0.0)
       '@typescript-eslint/type-utils': 8.57.2(eslint@10.1.0(jiti@2.6.1))(typescript@5.9.3)
       enquirer: 2.3.6
       magic-string: 0.30.21
@@ -9969,10 +9969,10 @@ snapshots:
 
   '@scarf/scarf@1.4.0': {}
 
-  '@schematics/angular@20.3.9(chokidar@5.0.0)':
+  '@schematics/angular@20.0.6(chokidar@5.0.0)':
     dependencies:
-      '@angular-devkit/core': 20.3.9(chokidar@5.0.0)
-      '@angular-devkit/schematics': 20.3.9(chokidar@5.0.0)
+      '@angular-devkit/core': 20.0.6(chokidar@5.0.0)
+      '@angular-devkit/schematics': 20.0.6(chokidar@5.0.0)
       jsonc-parser: 3.3.1
     transitivePeerDependencies:
       - chokidar
@@ -10019,7 +10019,7 @@ snapshots:
 
   '@sinclair/typebox@0.34.49': {}
 
-  '@spartan-ng/brain@0.0.1-alpha.656(@angular/cdk@20.0.0(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/forms@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.2.2)':
+  '@spartan-ng/brain@0.0.1-alpha.570(@angular/cdk@20.0.0(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/forms@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.2.2)':
     dependencies:
       '@angular/cdk': 20.0.0(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/common': 21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2)
@@ -10032,24 +10032,21 @@ snapshots:
     optionalDependencies:
       luxon: 3.7.2
 
-  '@spartan-ng/cli@0.0.1-alpha.656(34495b07607425c00ca569d27dfde6b7)':
+  '@spartan-ng/cli@0.0.1-alpha.570(34495b07607425c00ca569d27dfde6b7)':
     dependencies:
       '@angular/core': 21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)
-      '@nx/angular': 22.6.3(320664db0ad50e708cd5bdd60fb60104)
+      '@nx/angular': 22.6.3(2ad337726ce3340e0dd55c97a828380c)
       '@nx/devkit': 22.6.3(nx@22.6.3)
       '@nx/js': 22.6.3(@babel/traverse@7.29.0)(nx@22.6.3)
       '@nx/workspace': 22.6.3
       '@phenomnomnominal/tsquery': 6.1.4(typescript@5.9.3)
-      '@schematics/angular': 20.3.9(chokidar@5.0.0)
+      '@schematics/angular': 20.0.6(chokidar@5.0.0)
       enquirer: 2.3.6
       jsonc-eslint-parser: 2.4.2
       node-html-parser: 7.1.0
       nx: 22.6.3
       picocolors: 1.1.1
-      postcss: 8.5.8
-      postcss-selector-parser: 7.1.1
       semver: 7.5.4
-      tailwind-merge: 3.5.0
       ts-morph: 25.0.1
       tslib: 2.8.1
       typescript: 5.9.3
@@ -10219,7 +10216,7 @@ snapshots:
 
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
-      '@types/express-serve-static-core': 4.19.8
+      '@types/express-serve-static-core': 5.1.1
       '@types/node': 24.12.0
 
   '@types/connect@3.4.38':
@@ -12470,7 +12467,7 @@ snapshots:
       acorn: 8.16.0
       eslint-visitor-keys: 3.4.3
       espree: 9.6.1
-      semver: 7.5.4
+      semver: 7.7.4
 
   jsonc-parser@3.2.0: {}
 
@@ -13171,7 +13168,7 @@ snapshots:
       bl: 4.1.0
       chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
+      cli-spinners: 2.9.2
       is-interactive: 1.0.0
       log-symbols: 4.1.0
       strip-ansi: 6.0.1
@@ -13316,8 +13313,6 @@ snapshots:
   picomatch@2.3.2: {}
 
   picomatch@4.0.2: {}
-
-  picomatch@4.0.3: {}
 
   picomatch@4.0.4: {}
 
@@ -14155,6 +14150,8 @@ snapshots:
       source-map: 0.6.1
 
   source-map@0.6.1: {}
+
+  source-map@0.7.4: {}
 
   source-map@0.7.6: {}
 
