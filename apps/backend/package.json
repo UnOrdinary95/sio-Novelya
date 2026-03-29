@@ -1,17 +1,22 @@
 {
-    "name": "novelya-api",
+    "name": "@novelya/backend",
+    "private": true,
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node dist/server.js",
         "dev": "tsx watch src/server.ts",
-        "dev2": "nodemon -L --watch src --ext ts --exec \"tsx src/server.ts\"",
-        "build": "tsc"
+        "build": "tsc -p tsconfig.json",
+        "start": "node dist/server.js",
+        "typecheck": "tsc --noEmit -p tsconfig.json",
+        "lint": "eslint \"src/**/*.{ts,js}\"",
+        "lint:fix": "eslint \"src/**/*.{ts,js}\" --fix",
+        "format": "prettier --write \"src/**/*.{ts,js,json}\"",
+        "format:check": "prettier --check \"src/**/*.{ts,js,json}\""
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "packageManager": "pnpm@10.32.1",
     "description": "",
     "dependencies": {
         "bcrypt": "^6.0.0",
