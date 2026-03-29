@@ -1,22 +1,4 @@
 services:
-    novelya-back:
-        build: .
-        image: novelya-back:latest
-        ports:
-            - "3000:3000"
-        env_file: .env
-        environment:
-            - TZ=Europe/Paris # Set timezone to Paris for correct logging timestamps
-        depends_on:
-            mongodb:
-                condition: service_healthy
-        volumes:
-            - ./:/app # Bind mount local directory to container for live file syncing
-        develop:
-            watch:
-                - action: rebuild
-                  path: ./package.json
-                  target: /app
 
     mongodb:
         image: mongo:8

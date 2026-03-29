@@ -23,7 +23,7 @@ build/
 .env.prod
 
 # Angular
-/.angular/cache
+.angular/
 
 # Sass
 .sass-cache/

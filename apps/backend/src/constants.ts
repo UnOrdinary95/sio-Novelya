@@ -39,7 +39,7 @@ export const JWT_SECRET = isProd
     : '739t8nBsBaWslYtENddDNKMJV/HF/Tk4ZqhPpD5FwCQ=';
 export const URI = isProd
     ? (process.env.MONGO_URI as string)
-    : 'mongodb://admin:password@mongodb:27017/novelya?authSource=admin';
+    : 'mongodb://admin:password@localhost:27017/novelya?authSource=admin';
 
 export const NOVELYA_API_URL = isProd
     ? (process.env.NOVELYA_API_URL as string)

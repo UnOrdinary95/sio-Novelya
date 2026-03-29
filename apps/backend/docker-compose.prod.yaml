@@ -1,23 +1,4 @@
 services:
-    novelya-back:
-        build:
-            context: .
-            dockerfile: Dockerfile.prod
-        image: novelya-back:prod
-        container_name: novelya-back-prod
-        ports:
-            - "3000:3000"
-        env_file: .env
-        environment:
-            - TZ=Europe/Paris
-            - NODE_ENV=PROD
-        depends_on:
-            mongodb:
-                condition: service_healthy
-        volumes:
-            - ./public/covers:/app/public/covers
-        restart: unless-stopped
-
     mongodb:
         image: mongo:8
         container_name: novelya-mongodb-prod
