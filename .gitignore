@@ -1,0 +1,66 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# Logs
+*.log
+testem.log
+/libpeerconnection.log
+
+# Build
+dist/
+build/
+/tmp
+/out-tsc
+/bazel-out
+
+# TypeScript
+*.tsbuildinfo
+
+# Env
+.env
+.env.prod
+
+# Angular
+/.angular/cache
+
+# Sass
+.sass-cache/
+
+# Coverage
+/coverage
+
+# Typings
+/typings
+
+# IDE / OS
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# GitHub
+.github/
+/.github/instructions
+
+# Other
+/public
+dump_prod/
+/connect.lock
+__screenshots__/
+/.agent
+
+# TODO
+TODO.md

@@ -1,0 +1,4 @@
+**/dist/**
+**/node_modules/**
+.pnp.cjs
+**/src/components/ui/**
