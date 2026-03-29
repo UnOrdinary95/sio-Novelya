@@ -6,7 +6,6 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "pnpm -r --if-present run lint",
         "lint:fix": "pnpm -r --if-present run lint:fix",
         "format": "pnpm -r --if-present run format",
