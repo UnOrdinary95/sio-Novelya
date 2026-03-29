@@ -1,9 +1,10 @@
 # Node
 node_modules/
 npm-debug.log*
-yarn-error.log
+pnpm-debug.log*
 
 # Logs
+logs
 *.log
 testem.log
 /libpeerconnection.log
@@ -35,11 +36,6 @@ build/
 /typings
 
 # IDE / OS
-.vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 .history/*
 .idea/
 .project
@@ -60,7 +56,6 @@ Thumbs.db
 dump_prod/
 /connect.lock
 __screenshots__/
-/.agent
 
 # TODO
 TODO.md
