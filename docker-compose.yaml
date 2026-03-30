@@ -1,13 +1,40 @@
 services:
+    frontend:
+        container_name: novelya-frontend
+        build:
+            context: .
+            dockerfile: apps/frontend/Dockerfile
+            args:
+                NOVELYA_API_URL: ${NOVELYA_API_URL:-http://localhost:3000}
+        ports:
+            - '${FRONTEND_PORT:-4200}:80'
+        depends_on:
+            - backend
+
+    backend:
+        container_name: novelya-backend
+        build:
+            context: .
+            dockerfile: apps/backend/Dockerfile
+        ports:
+            - '${BACKEND_PORT:-3000}:3000'
+        env_file:
+            - .env
+        environment:
+            - MONGO_URI=${MONGO_URI:-mongodb://admin:password@db:27017/novelya?authSource=admin}
+        depends_on:
+            db:
+                condition: service_healthy
+
     db:
         image: mongo:8
         container_name: novelya-mongodb
         ports:
             - '${MONGO_PORT:-27017}:27017'
         environment:
-            MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
-            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-            MONGO_INITDB_DATABASE: ${MONGO_DB}
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-admin}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-password}
+            MONGO_INITDB_DATABASE: ${MONGO_DB:-novelya}
         volumes:
             - mongodb_data:/data/db
             - ./docker/jeu-essai/init.sh:/docker-entrypoint-initdb.d/init.sh:ro
