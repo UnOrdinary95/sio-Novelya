@@ -32,14 +32,15 @@ if (isProd) {
     console.log('Running in development mode');
 }
 
-export const PORT = isProd ? process.env.PORT : 3000;
+export const PORT = isProd ? process.env.PORT || 3000 : 3000;
 // as string pour indiquer à TypeScript que ce sera toujours un string en production
 export const JWT_SECRET = isProd
     ? (process.env.JWT_SECRET as string)
     : '739t8nBsBaWslYtENddDNKMJV/HF/Tk4ZqhPpD5FwCQ=';
-export const URI = isProd
-    ? (process.env.MONGO_URI as string)
-    : 'mongodb://admin:password@localhost:27017/novelya?authSource=admin';
+export const URI =
+    process.env.MONGO_URI ||
+    'mongodb://admin:password@localhost:27017/novelya?authSource=admin';
+// TODO: utilise localhost en dev !!!
 
 export const NOVELYA_API_URL = isProd
     ? (process.env.NOVELYA_API_URL as string)

@@ -1,9 +1,11 @@
-import app from "./app.js";
-import { connectDb } from "./config/db.js";
-import { PORT } from "./constants.js";
-import { logger } from "./utils/loggerUtils.js";
-import fs from "fs/promises"; // File System pour manipuler les fichiers
-import { COVERS_DIR } from "./constants.js";
+import './env.js';
+
+import app from './app.js';
+import { connectDb } from './config/db.js';
+import { PORT } from './constants.js';
+import { logger } from './utils/loggerUtils.js';
+import fs from 'fs/promises';
+import { COVERS_DIR } from './constants.js';
 
 await fs.mkdir(COVERS_DIR, { recursive: true });
 

@@ -1,13 +1,7 @@
 import { MongoClient, Db } from 'mongodb';
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { URI } from '../constants.js';
 import { logger } from '../utils/loggerUtils.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.join(__dirname, '../../../../.env') });
 if (!URI) {
     logger.error('DB Config', new Error('URI MongoDB manquant !'));
     process.exit(1);
