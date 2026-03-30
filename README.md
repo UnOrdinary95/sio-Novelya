@@ -49,7 +49,9 @@
 
 ### Prérequis
 
-- Docker et Docker Compose installés
+- **Docker** et **Docker Compose** installés
+    - **Windows** : Docker Desktop (obligatoire)
+    - **Linux/macOS** : Docker Engine + Docker Compose
 
 ### Démarrage rapide
 
