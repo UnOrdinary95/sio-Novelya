@@ -21,8 +21,9 @@ export const GENRES = [
 
 export const PATTERNS = {
     name: /^[a-zA-Z\-_ ]+$/,
-    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    password: /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+    email: /^[^\s@A-Z]+@[^\s@A-Z]+\.[^\s@A-Z]+$/,
+    password:
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{12,}$/,
 } as const;
 
 export const isProd = process.env.NODE_ENV === 'production';

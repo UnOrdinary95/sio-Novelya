@@ -34,10 +34,16 @@ export class RegisterForm {
             Validators.minLength(3),
             Validators.pattern('^[a-zA-Z_\\- ]+$'),
         ]),
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [
+            Validators.required,
+            Validators.email,
+            Validators.pattern('^[^\\s@A-Z]+@[^\\s@A-Z]+\\.[^\\s@A-Z]+$'),
+        ]),
         password: new FormControl('', [
             Validators.required,
-            Validators.pattern('^(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
+            Validators.pattern(
+                '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};\':"\\\\|,.<>\\/?]).{12,}$',
+            ),
         ]),
         terms: new FormControl(false, [Validators.requiredTrue]),
     });
