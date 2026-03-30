@@ -25,6 +25,7 @@
   <a href="#architecture">Architecture</a> •
   <a href="#stack-technique">Stack technique</a> •
   <a href="#documentation">Documentation</a> •
+  <a href="#tests-de-lapplication">Tests</a> •
   <a href="#api-endpoints">API Endpoints</a>
 </p>
 
@@ -222,6 +223,48 @@ Le système distingue trois types d'acteurs avec des niveaux de permissions diff
 - Gérer les utilisateurs
 - Créer / Modifier / Supprimer un Light Novel
 - Uploader des couvertures
+
+---
+
+## Tests de l'application
+
+Pour tester l'application, utilisez les comptes suivants pré-configurés dans la base de données :
+
+### Compte Administrateur
+
+| Champ        | Valeur                |
+| ------------ | --------------------- |
+| Email        | `hernani@yopmail.com` |
+| Mot de passe | `Hernani95520`        |
+
+**Permissions** :
+
+- Gestion complète des Light Novels (CRUD)
+- Upload de couvertures
+- Gestion des utilisateurs
+- Accès à toutes les fonctionnalités membres
+
+### Compte Membre
+
+| Champ        | Valeur                 |
+| ------------ | ---------------------- |
+| Email        | `john.doe@example.com` |
+| Mot de passe | `Motdepasse123`        |
+
+**Permissions** :
+
+- Consulter le catalogue
+- Ajouter au panier
+- Gérer sa wishlist
+- Voir son historique d'achats
+- Modifier son profil
+
+### Fonctionnalités à tester
+
+1. **Parcours visiteur** : Naviguer sur le catalogue, filtrer par genre, rechercher un titre
+2. **Inscription** : Créer un nouveau compte utilisateur
+3. **Connexion membre** : Se connecter avec le compte membre et tester le panier
+4. **Connexion admin** : Se connecter avec le compte admin et créer/modifier un Light Novel
 
 ---
 
