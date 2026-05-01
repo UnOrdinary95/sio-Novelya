@@ -35,6 +35,7 @@ services:
             MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-admin}
             MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-password}
             MONGO_INITDB_DATABASE: ${MONGO_DB:-novelya}
+            GLIBC_TUNABLES: glibc.pthread.rseq=1 # Fedora 43 fix
         volumes:
             - mongodb_data:/data/db
             - ./docker/jeu-essai/init.sh:/docker-entrypoint-initdb.d/init.sh:ro

@@ -1,0 +1,611 @@
+[
+    {
+        "_id": { "$oid": "69406e90f356ef14b911c018" },
+        "title": "Ascendance of a Bookworm: Part 1 Volume 1",
+        "author": "Kazuki Miya",
+        "price": 9.99,
+        "inStock": true,
+        "description": "A certain college girl who's loved books ever since she was a little girl dies in an accident and is reborn in another world she knows nothing about. She is now Myne, the sickly five-year-old daughter of a poor soldier. To make things worse, the world she's been reborn in has a very low literacy rate and books mostly don't exist. She'd have to pay an enormous amount of money to buy one. Myne resolves herself: If there aren't any books, she'll just have to make them! Her goal is to become a libra",
+        "genres": ["comedy", "fantasy"],
+        "releaseDate": "1970-08-22T07:16:41",
+        "cover": "covers/69406e90f356ef14b911c018.jpg"
+    },
+    {
+        "_id": { "$oid": "69406e94f356ef14b911c019" },
+        "title": "Ascendance of a Bookworm: Part 2 Volume 2",
+        "author": "Kazuki Miya",
+        "price": 16.99,
+        "inStock": true,
+        "description": "As Myne continues her busy life as an apprentice blue shrine maiden, some good news changes everything: Her mother is pregnant! Naturally, Myne immediately sets out to make a picture book for her future little sibling. But there's still so much she doesn't know about the temple that doing anything is a struggle. She's forced into the education of a shrine maiden and has her hands full with her new attendants. She has a mountain of work as the orphanage director, too. As always Myne has bitten of",
+        "genres": ["comedy", "fantasy"],
+        "releaseDate": "1970-08-22T10:01:41",
+        "cover": "covers/69406e94f356ef14b911c019.jpg"
+    },
+    {
+        "_id": { "$oid": "69406e98f356ef14b911c01a" },
+        "title": "Ascendance of a Bookworm: Part 5 Volume 2",
+        "author": "Kazuki Miya",
+        "price": 12.99,
+        "inStock": false,
+        "description": "As snow falls around Ahrensbach’s castle, Ferdinand, soon to be married to the duchy’s next archduchess, receives a concerning letter. Not only has Rozemyne been summoned by the royal family once again, but she is also being taken to the underground archive hidden beneath the Royal Academy’s library. Even as a third-year, she proves to be a source of constant headaches—and the chaos only continues when she manages to pull an unexpected figure into her joint research! The stakes are raised higher",
+        "genres": ["comedy", "fantasy"],
+        "releaseDate": "1970-08-22T21:16:50",
+        "cover": "covers/69406e98f356ef14b911c01a.jpg"
+    },
+    {
+        "_id": { "$oid": "69406e9bf356ef14b911c01b" },
+        "title": "Mushoku Tensei: Jobless Reincarnation Vol. 1",
+        "author": "Rifujin na Magonote",
+        "price": 9.99,
+        "inStock": false,
+        "description": "Death is only the beginning in this epic and influential fantasy light novel series that spawned a manga adaptation (and a manga spin-off: Mushoku Tensei: Roxy Gets Serious), all available from Seven Seas. And don’t miss the new anime!\nKicked out by his family and wandering the streets, an unemployed 34-year-old shut-in thinks he’s hit rock-bottom—just as he’s hit and killed by a speeding truck! Awakening to find himself reborn as an infant in a world of swords and sorcery, but with the memories",
+        "genres": ["adventure", "fantasy"],
+        "releaseDate": "1970-08-22T04:28:44",
+        "cover": "covers/69406e9bf356ef14b911c01b.jpg"
+    },
+    {
+        "_id": { "$oid": "69406e9ff356ef14b911c01c" },
+        "title": "The Eminence in Shadow, Vol. 1",
+        "author": "Aizawa Daisuke",
+        "price": 13.99,
+        "inStock": true,
+        "description": "Even in his past life, Cid’s dream wasn’t to become a protagonist or a final boss. He’d rather lie low as a minor character until it’s prime time to reveal he’s a mastermind…or at least, do the next best thing—pretend to be one! And now that he’s been reborn into another world, he’s ready to set the perfect conditions to live out his dreams to the fullest. Armed with his overactive imagination, Cid jokingly recruits members to his organization and makes up a whole backstory about an evil cult th",
+        "genres": ["action", "adventure", "comedy", "drama", "fantasy"],
+        "releaseDate": "1970-08-22T15:51:45",
+        "cover": "covers/69406e9ff356ef14b911c01c.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ea1f356ef14b911c01d" },
+        "title": "That Time I Got Reincarnated as a Slime, Vol. 7",
+        "author": "Fuse",
+        "price": 12.99,
+        "inStock": true,
+        "description": "A gutsy glob in crisis! News of the demon lord Clayman’s defeat by Rimuru shakes the Holy Empire of Lubelius to its core—especially since the chief knight of the nation’s Imperial Guard and captain of the Crusader forces, Hinata Sakaguchi, launched a bold attack on Rimuru not long ago. Things look only more dire when a priest sent by Rimuru to attend an urgent meeting of Lubelius bigwigs ends up murdered. The stakes couldn’t be higher for either side as Hinata heads to Tempest to settle things—o",
+        "genres": ["action", "adventure", "comedy", "drama", "fantasy"],
+        "releaseDate": "1970-08-22T10:07:08",
+        "cover": "covers/69406ea1f356ef14b911c01d.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ea5f356ef14b911c01e" },
+        "title": "Rascal Does Not Dream of Bunny Girl Senpai",
+        "author": "Kamoshida Hajime",
+        "price": 10.99,
+        "inStock": true,
+        "description": "Bunny girls do not live in libraries. This is simply common sense. And yet, that’s exactly where Sakuta finds one in the wild. More bewildering is who the bunny girl is: Mai Sakurajima, a girl one year older than Sakuta, famous at their school for her acting career even though she’s currently on break. To top it all off, it seems like no one else in the library can see Mai at all, no matter what she does or...wears. Wanting to find out more about this mystery and maybe get a little closer to thi",
+        "genres": [
+            "comedy",
+            "drama",
+            "fantasy",
+            "romance",
+            "slice of life",
+            "supernatural"
+        ],
+        "releaseDate": "1970-08-22T04:33:30",
+        "cover": "covers/69406ea5f356ef14b911c01e.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ea9f356ef14b911c01f" },
+        "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 2: Love, Witches & Other Delusions!",
+        "author": "Akatsuki Natsume",
+        "price": 13.99,
+        "inStock": false,
+        "description": "Kazuma's first winter in another world isn't going so well. With companions like Aqua (Arch-priest), Megumin (Arch-wizard), and Darkness (Crusader), his party of advanced classes should be the most powerful in Axel--but they're so dysfunctional, even the easiest-seeming quest goes terribly awry, and they can barely save enough to afford a stable! When an opportunity arises to stay in a mansion, it's like a dream come true--the only catch is that they have to exorcise the evil spirits haunting it",
+        "genres": ["action", "adventure", "comedy", "fantasy", "romance"],
+        "releaseDate": "1970-08-22T02:00:01",
+        "cover": "covers/69406ea9f356ef14b911c01f.jpg"
+    },
+    {
+        "_id": { "$oid": "69406eadf356ef14b911c020" },
+        "title": "Too Many Losing Heroines! Vol. 1",
+        "author": "Amamori Takibi",
+        "price": 10.99,
+        "inStock": true,
+        "description": "The award-winning light novel that inspired a manga—also available from Seven Seas—and an upcoming anime!\nPlain, boring, and friendless Nukumizu Kazuhiko has witnessed something completely baffling: popular girl Yanami Anna was friend-zoned by her childhood friend and crush! In fact, all the popular girls around him are getting similarly rejected by the boys they like. Without realizing it, Kazuhiko becomes entangled in the relationship drama where all the leading heroines are losing out on love",
+        "genres": ["comedy", "romance"],
+        "releaseDate": "1970-08-23T00:05:21",
+        "cover": "covers/69406eadf356ef14b911c020.jpg"
+    },
+    {
+        "_id": { "$oid": "69406eb1f356ef14b911c021" },
+        "title": "Too Many Losing Heroines! Vol. 5",
+        "author": "Amamori Takibi",
+        "price": 12.99,
+        "inStock": true,
+        "description": "A SISTER IN DISTRESS\nNo matter what turmoils Nukumizu Kazuhiko goes through, he always knows his clingy little sister Kaju has his back. But one Valentine’s Day, the unthinkable happens—she makes chocolate for everyone except her beloved oniisama! Something must be wrong, and Nukumizu’s got to get the bottom of it. Maybe he could sneak into her school and pretend to be a junior high student? Or maybe he’s just got to accept that he perhaps isn’t the shining jewel of his sister’s heart any longer",
+        "genres": ["comedy", "romance"],
+        "releaseDate": "1970-08-23T05:31:57",
+        "cover": "covers/69406eb1f356ef14b911c021.jpg"
+    },
+    {
+        "_id": { "$oid": "69406eb5f356ef14b911c022" },
+        "title": "Sword Art Online 25: Unital Ring IV",
+        "author": "Kawahara Reki",
+        "price": 9.99,
+        "inStock": true,
+        "description": "Kirito’s chance encounter with Eolyne, a man with the same eyes and voice as his deceased friend, shakes him to the core. But with the possibility of an interworld war breaking out in the Underworld growing higher by the day, Kirito has no time to be sentimental. Meanwhile, the decisive battle against Mutasina of the Virtual Research Society looms, and she’s used her powers to force a battalion of one hundred mages under her command. Can Kirito and company devise a strategy to defy their overwhe",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "romance",
+            "sci-fi"
+        ],
+        "releaseDate": "1970-08-22T21:26:50",
+        "cover": "covers/69406eb5f356ef14b911c022.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ebbf356ef14b911c023" },
+        "title": "Sword Art Online 15: Alicization Invading",
+        "author": "Kawahara Reki",
+        "price": 9.99,
+        "inStock": true,
+        "description": "Adminstrator's defeat has come at a heavy cost: The death of Eugeo as well as the mental decline of Kirito. Six months after the epic battle atop Central Cathedral, Kirito spends his days in the Underworld wheelchair-bound; bereft of emotion or even a will to live. Although Alice and Bercouli do what they can to help him, it isn't long before the armies of the dark territory are start to move in earnest. The \"Final Stress Test\" has begun. But will Kirito be ready?\n\n[From [Yen Press](https://yenp",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "romance",
+            "sci-fi"
+        ],
+        "releaseDate": "1970-08-22T04:40:09",
+        "cover": "covers/69406ebbf356ef14b911c023.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ebff356ef14b911c024" },
+        "title": "86--EIGHTY-SIX, Vol. 6: Darkest Before the Dawn",
+        "author": "Asato Asato",
+        "price": 13.99,
+        "inStock": false,
+        "description": "WE ARE NOT THE SAME. Live to fight. Die with honor. That was all the Eighty-Six knew, and they were proud. However, seeing themselves reflected in the Sirins-slaughtered by the thousands, with nothing to show for it-a crack has formed in their ironclad resolve. Shin’s mind festers with doubt. At the same time, Lena’s heart tears at the seams as she struggles to understand him. Will the two find common ground over the course of the United Kingdom operation? Or will they only drift further apart…?",
+        "genres": ["action", "adventure", "drama", "romance", "sci-fi"],
+        "releaseDate": "1970-08-22T18:26:50",
+        "cover": "covers/69406ebff356ef14b911c024.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ec3f356ef14b911c025" },
+        "title": "Overlord, Vol. 1: The Undead King",
+        "author": "Maruyama Kugane",
+        "price": 11.99,
+        "inStock": true,
+        "description": "For twelve years, the virtual world of Yggdrasil has served as the playground and battlefield for the skeletal lord Momonga and his guild of fellow monsters, Ainz Ooal Gown. But the guild's glory days are over, and the game is shutting down permanently. When Momonga logs in one last time just to be there when the servers go dark, something happens-and suddenly, fantasy is reality. A rogues' gallery of fanatically devoted NPCs is ready to obey his every order, but the world Momonga now inhabits i",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "fantasy",
+            "sci-fi"
+        ],
+        "releaseDate": "1970-08-21T23:05:30",
+        "cover": "covers/69406ec3f356ef14b911c025.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ec6f356ef14b911c026" },
+        "title": "Secrets of the Silent Witch, Vol. 1",
+        "author": "Isora Matsuri",
+        "price": 10.99,
+        "inStock": false,
+        "description": "Monica Everett, the Silent Witch, is the only mage in the world who can use unchanted magecraft, a true hero who singlehandedly defeated a legendary black dragon. However, this young genius is actually…super-duper shy! That’s right: She learned to cast spells silently just to avoid speaking in public, and despite her power, she has zero self-confidence. Now Monica has been tasked with secretly guarding the second prince. Can she keep it together as she faces both the evil forces targeting the pr",
+        "genres": ["action", "adventure", "comedy", "fantasy"],
+        "releaseDate": "1970-08-23T00:03:30",
+        "cover": "covers/69406ec6f356ef14b911c026.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ecaf356ef14b911c027" },
+        "title": "Secrets of the Silent Witch, Vol. 3",
+        "author": "Isora Matsuri",
+        "price": 9.99,
+        "inStock": true,
+        "description": "Monica is still in shock from the events surrounding the Spiralflame, but her next trial won’t wait. She has been chosen to participate in a chess tournament held between Ridill’s three most prestigious schools— and that includes her alma mater, Minerva’s! She disguises herself to hide from a certain someone, but not everything goes to plan... What’s more, there may be an even greater danger lurking in the competition. Has Monica’s undercover school life finally reached its end?\n\n[From [Yen Pres",
+        "genres": ["action", "adventure", "comedy", "fantasy"],
+        "releaseDate": "1970-08-23T02:43:30",
+        "cover": "covers/69406ecaf356ef14b911c027.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ecdf356ef14b911c028" },
+        "title": "WorldEnd: What Do You Do at the End of the World? Are You Busy? Will You Save Us?, Vol. 2",
+        "author": "Kareno Akira",
+        "price": 11.99,
+        "inStock": true,
+        "description": "Just a little longer in this ephemeral dream... Half a month has passed since Chtholly and the other faerie soldiers departed for battle, but they still have yet to return. Willem heads to Island No.11 in search of answers and brings along Tiat, one of the young leprechauns who shoulder the burden of being among the next generation of faerie soldiers. But once Willem and Tiat arrive, they hear news that the faeries' decisive battle against the Beasts ended in failure, and there's still no sign o",
+        "genres": [
+            "action",
+            "adventure",
+            "drama",
+            "fantasy",
+            "romance",
+            "sci-fi"
+        ],
+        "releaseDate": "1970-08-22T04:47:07",
+        "cover": "covers/69406ecdf356ef14b911c028.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ed0f356ef14b911c029" },
+        "title": "Re:ZERO -Starting Life in Another World-, Vol. 20",
+        "author": "Nagatsuki Tappei",
+        "price": 15.99,
+        "inStock": true,
+        "description": "The Archbishops of Greed and Wrath have fallen, but the war to reclaim Watergate City continues. The royal selection candidates each face their own crisis as they fight against the insatiable Gluttony, ardent Lust, infallible Eight Arms, and the superhuman Sword Saint. But the candidates’ strong bonds, and dedication to keep their promises and oaths, may well turn the losing battle in their favor!\n\n[From [Yen Press](https://yenpress.com/titles/9781975335311-re-starting-life-in-another-world-vol-",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "fantasy",
+            "romance"
+        ],
+        "releaseDate": "1970-08-22T18:30:25",
+        "cover": "covers/69406ed0f356ef14b911c029.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ed4f356ef14b911c02a" },
+        "title": "Alya Sometimes Hides Her Feelings in Russian, Vol. 2",
+        "author": "Sunsunsun",
+        "price": 10.99,
+        "inStock": true,
+        "description": "After saying some pretty embarrassing things to each other, Alya and Masachika are trying to figure out the nature of their changing relationship. Alya’s feeling a bit flustered now that she’s seeing more of his “cool” side, but she needs to clear her mind and be ready for rivals popping out of the woodwork. One of Masachika’s childhood friends doesn’t approve of her, and his former middle school election opponent throws down the gauntlet. The campaign to win the student council election begins ",
+        "genres": ["comedy", "romance", "slice of life"],
+        "releaseDate": "1970-08-23T00:05:30",
+        "cover": "covers/69406ed4f356ef14b911c02a.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ed7f356ef14b911c02b" },
+        "title": "I've Been Killing Slimes for 300 Years and Maxed Out My Level, Vol. 1",
+        "author": "Morita Kisetsu",
+        "price": 11.99,
+        "inStock": true,
+        "description": "After living a painful life as an office worker, Azusa ended her short life by dying from overworking. So when she found herself reincarnated as an undying, unaging witch in a new world, she vows to spend her days stress free and as pleasantly as possible. She ekes out a living by hunting down the easiest targets - the slimes! But after centuries of doing this simple job, she's ended up with insane powers...how will she maintain her low key life now?!\n\n[From [Yen Press](https://yenpress.com/titl",
+        "genres": ["comedy", "fantasy", "slice of life"],
+        "releaseDate": "1970-08-22T12:48:32",
+        "cover": "covers/69406ed7f356ef14b911c02b.jpg"
+    },
+    {
+        "_id": { "$oid": "69406edbf356ef14b911c02c" },
+        "title": "Date A Live, Vol. 1: Dead-End Tohka",
+        "author": "Tachibana Koushi",
+        "price": 11.99,
+        "inStock": true,
+        "description": "A little meet-cute in a decimated city April 10. The first day of school. Shido Itsuka is rudely awoken by his personal alarm clock-his little sister. It’s shaping up to be another typical day…well, as typical as it gets on a planet plagued by massive spatial quakes. Little does Shido know, however, his life is about to take a sudden turn when he encounters the source of this destructive phenomenon-a girl his age, apparently known as a Spirit. Turns out, there are only two ways he can stop her f",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "fantasy",
+            "romance"
+        ],
+        "releaseDate": "1970-08-21T20:12:05",
+        "cover": "covers/69406edbf356ef14b911c02c.jpg"
+    },
+    {
+        "_id": { "$oid": "69406edef356ef14b911c02d" },
+        "title": "Toradora! Vol. 1",
+        "author": "Takemiya Yuyuko",
+        "price": 16.99,
+        "inStock": true,
+        "description": "EYE OF THE TAIGA!\nTakasu Ryuuji might look like a thug, but he’s actually a nice guy. Making friends when you’ve got an unintentionally scary face is tough–and don’t even get him started on girlfriends. But with his secret crush in his class, the start of his second year of high school is off to a good start…until he crosses paths with Aisaka Taiga. Beautiful, frightening, and not quite five feet tall, the girl known as the Palmtop Tiger is the one person in school even scarier than Ryuuji himse",
+        "genres": ["comedy", "drama", "romance", "slice of life"],
+        "releaseDate": "1970-08-21T06:18:30",
+        "cover": "covers/69406edef356ef14b911c02d.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ee2f356ef14b911c02e" },
+        "title": "Accel World, Vol. 27",
+        "author": "Kawahara Reki",
+        "price": 14.99,
+        "inStock": true,
+        "description": "New warriors have suddenly appeared on the \"Brain Burst 2039\" battlefield — the \"Drive Linkers.” This marks the beginning of an invasion by the fourth Accelerated World, \"Dread Drive 2047.\" The invaders' vanguard, Eurochion, bested Burst Linkers with overwhelming strength. And amidst the battle, Silver Crow gains new powers! The outcome of this \"Inter-World War” may determine the very fate of Brain Burst!\n\n[From [Yen Press](https://yenpress.com/titles/9798855411874-accel-world-vol-27-light-novel",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "romance",
+            "sci-fi"
+        ],
+        "releaseDate": "1970-08-23T08:18:28",
+        "cover": "covers/69406ee2f356ef14b911c02e.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ee6f356ef14b911c02f" },
+        "title": "The Eminence in Shadow, Vol. 2",
+        "author": "Aizawa Daisuke",
+        "price": 10.99,
+        "inStock": false,
+        "description": "Cid pays a visit to the Sacred Land, where he finds himself getting roped into the Goddess’s Trial. It’s a ritual event that summons warriors from the past to engage with only the most worthy from the present. When Cid squares off against the witch who brought devastation to the world, the door to the Sanctuary creaks open, granting the Shadow Garden valuable insight into the possessed and the Cult of Diablos. That is until Cid, blissfully ignorant of the conspiracies playing out behind the scen",
+        "genres": ["action", "adventure", "comedy", "drama", "fantasy"],
+        "releaseDate": "1970-08-22T18:25:05",
+        "cover": "covers/69406ee6f356ef14b911c02f.jpg"
+    },
+    {
+        "_id": { "$oid": "69406eeaf356ef14b911c030" },
+        "title": "The Eminence in Shadow, Vol. 6",
+        "author": "Aizawa Daisuke",
+        "price": 10.99,
+        "inStock": true,
+        "description": "A mysterious cabal called the Thirteen Nightblades has been running things in the Midgar Kingdom from the shadows, and its members have concealed all manner of crimes through their connections to the Cult of Diablos. How impressi—no, how terrible. These dastardly nobles commit so many evil deeds, and yet justice always evades them. That’s when a serial killer known only as “Jack the Ripper” appears, plunging the corrupt capital into chaos! In order to eradicate evil, an even greater evil is need",
+        "genres": ["action", "adventure", "comedy", "drama", "fantasy"],
+        "releaseDate": "1970-08-23T05:43:50",
+        "cover": "covers/69406eeaf356ef14b911c030.jpg"
+    },
+    {
+        "_id": { "$oid": "69406eeef356ef14b911c031" },
+        "title": "Reign of the Seven Spellblades, Vol. 8",
+        "author": "Uno Bokuto",
+        "price": 15.99,
+        "inStock": true,
+        "description": "The Kimberly Magic Academy combat league is heating up with the upperclassmen now going head-to-head! Meanwhile, the Sword Roses—joined by several seniors—delve deeper into the labyrinth in pursuit of Rivermoore, who has stolen one of Godfrey’s bones for purposes unknown. They find themselves on the necromancer’s home turf, a veritable kingdom of the dead where hordes of skeletal beasts and ghastly foes are at his beck and call. Will Oliver and friends manage to fend off his onslaught and recove",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "fantasy",
+            "romance"
+        ],
+        "releaseDate": "1970-08-23T00:08:30",
+        "cover": "covers/69406eeef356ef14b911c031.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ef2f356ef14b911c032" },
+        "title": "So I'm a Spider, So What?, Vol. 15",
+        "author": "Baba Okina",
+        "price": 15.99,
+        "inStock": true,
+        "description": "With the Potimas problem officially behind us (like, for real this time), I can finally focus on destroying this god-awful system!…is what I’d like to say. But it looks like a certain someone won’t let that happen without a fight. I swear, every time you think you’re about to blaze through the final encounter, the devs crank out a hotfix. And by that, I mean D decided to activate some World Quest that clued the entire population in on the fate of the world. So now everyone has to pick a side in ",
+        "genres": ["action", "adventure", "comedy", "drama", "fantasy"],
+        "releaseDate": "1970-08-23T00:13:30",
+        "cover": "covers/69406ef2f356ef14b911c032.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ef5f356ef14b911c033" },
+        "title": "Arifureta: From Commonplace to World's Strongest: Volume 13",
+        "author": "Shirakome Ryo",
+        "price": 15.99,
+        "inStock": true,
+        "description": "The battle to determine the fate of Tortus has finally begun. With Hajime and his companions deep inside the Sanctuary, the majority of those left defending the world from the army of apostles are just regular people. Despite their best efforts, the combined forces of the world continue to be pushed back—but just when it looks as though all hope is lost, Hajime’s final trump card kicks in. Meanwhile, Hajime himself faces off against Ehitruje, the self-styled god of this world. And in order to re",
+        "genres": ["action", "adventure", "fantasy"],
+        "releaseDate": "1970-08-23T02:55:25",
+        "cover": "covers/69406ef5f356ef14b911c033.jpg"
+    },
+    {
+        "_id": { "$oid": "69406ef9f356ef14b911c034" },
+        "title": "Goblin Slayer, Vol. 1",
+        "author": "Kagyu Kumo",
+        "price": 11.99,
+        "inStock": true,
+        "description": "A young priestess has formed her first adventuring party, but almost immediately they find themselves in distress. It's the Goblin Slayer who comes to their rescue--a man who's dedicated his life to the extermination of all goblins, by any means necessary. And when rumors of his feats begin to circulate, there's no telling who might come calling next...\n\n[From [Yen Press](https://yenpress.com/titles/9780316501590-goblin-slayer-vol-1-light-novel)]",
+        "genres": ["action", "adventure", "fantasy", "horror"],
+        "releaseDate": "1970-08-22T10:03:32",
+        "cover": "covers/69406ef9f356ef14b911c034.jpg"
+    },
+    {
+        "_id": { "$oid": "69406efcf356ef14b911c035" },
+        "title": "Date A Live, Vol. 3: Killer Kurumi",
+        "author": "Tachibana Koushi",
+        "price": 13.99,
+        "inStock": false,
+        "description": "The clock is ticking! June 5. The day another disaster strikes Shido’s high school. Transferring into his class is a new student, Kurumi, who immediately makes the jaw-dropping confession that she’s…a Spirit. With a twisted sense of justice and homicidal tendencies, she seems to buzz with impish glee whenever she destroys a piece of the world and its human populace. As tensions mount, Shido is instructed to do the one thing that will placate her-ridiculously enough, taking Kurumi out on a date a",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "fantasy",
+            "romance"
+        ],
+        "releaseDate": "1970-08-21T20:26:39",
+        "cover": "covers/69406efcf356ef14b911c035.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f00f356ef14b911c036" },
+        "title": "Log Horizon, Vol. 1: The Beginning of Another World",
+        "author": "Touno Mamare",
+        "price": 15.99,
+        "inStock": true,
+        "description": "Thirty thousand Japanese gamers awake one day to discover that the fantasy world of Elder Tales, an MMORPG that was formerly their collective hobby, has become their cold hard reality. Severed from their everyday lives, they confront a new horizon filled with ravenous monsters, flavorless food, and the inability to die! Amid the chaos, veteran gamer Shiroe gathers his friends, the guardian Naotsugu and the assassin Akatsuki, and together they embark on an adventure to change the world as they kn",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "fantasy",
+            "romance"
+        ],
+        "releaseDate": "1970-08-21T20:13:19",
+        "cover": "covers/69406f00f356ef14b911c036.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f02f356ef14b911c037" },
+        "title": "The Apothecary Diaries: Volume 5",
+        "author": "Hyuuga Natsu",
+        "price": 14.99,
+        "inStock": true,
+        "description": "The political situation at court has changed: the birth of Gyokuyou’s son has seen her elevated to the status of Empress, and meanwhile Jinshi is no longer able to continue his pretense at the rear palace. Although all seems peaceful after the destruction of the Shi clan, threats continue to loom—not least a potential plague of insects—and Maomao, as ever, somehow finds herself caught up in them. When Jinshi orders an expedition to Gyokuyou’s homeland, Maomao heads west. But is there something l",
+        "genres": ["drama", "mystery"],
+        "releaseDate": "1970-08-22T10:07:10",
+        "cover": "covers/69406f02f356ef14b911c037.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f06f356ef14b911c038" },
+        "title": "Classroom of the Elite: Year 2 Vol. 12.5",
+        "author": "Kinugasa Syougo",
+        "price": 10.99,
+        "inStock": true,
+        "description": "EVEN THE MIGHTY CAN FALL\nThe End-of-the-Year Special exam ended with a huge shock, but that was only the beginning. When one of the top students suddenly withdraws from the school, it throws the balance of power between the classes into disarray, giving both hope and despair to the students who are striving to graduate from Class A. Amid the chaos, Ayanokouji decides to make some changes of his own, but an unexpected appearance by his father puts him on edge. Just what is that man scheming—and h",
+        "genres": ["drama"],
+        "releaseDate": "1970-08-23T08:32:05",
+        "cover": "covers/69406f06f356ef14b911c038.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f0af356ef14b911c039" },
+        "title": "Classroom of the Elite: Year 3 Vol. 1",
+        "author": "Kinugasa Syougo",
+        "price": 13.99,
+        "inStock": true,
+        "description": "",
+        "genres": ["drama"],
+        "releaseDate": "1970-08-23T11:05:24",
+        "cover": "covers/69406f0af356ef14b911c039.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f0df356ef14b911c03a" },
+        "title": "Wait For Me Yesterday in Spring",
+        "author": "Hachimoku Mei",
+        "price": 11.99,
+        "inStock": true,
+        "description": "Childhood friends use time travel to try to avert tragedy in this bittersweet book about growing up, love, and loss–by the creators of the light novel and manga series The Tunnel to Summer, the Exit of Goodbyes (also from Seven Seas) that inspired an anime film.\nTwo years ago, high schooler Kanae left his small island community of Sodeshima to pursue his academic dreams in Tokyo. When that life falls short of his expectations, he runs away from home to return to Sodeshima and his childhood frien",
+        "genres": ["drama", "romance", "sci-fi"],
+        "releaseDate": "1970-08-22T21:13:37",
+        "cover": "covers/69406f0df356ef14b911c03a.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f11f356ef14b911c03b" },
+        "title": "I've Been Killing Slimes for 300 Years and Maxed Out My Level, Vol. 20",
+        "author": "Morita Kisetsu",
+        "price": 9.99,
+        "inStock": false,
+        "description": "",
+        "genres": ["comedy", "fantasy", "slice of life"],
+        "releaseDate": "1970-08-23T02:46:53",
+        "cover": "covers/69406f11f356ef14b911c03b.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f14f356ef14b911c03c" },
+        "title": "Lycoris Recoil: Ordinary Days",
+        "author": "Asaura",
+        "price": 9.99,
+        "inStock": true,
+        "description": "Located on the east side of Tokyo, overlooking the old, destroyed radio tower, Café LycoReco is a stylish and delicious place to relax. And this is a story depicting the everyday, extraordinary life of the charming staff that work there. Irresistible sweets, gun action, incredible games, heartwarming dramas, zombies and monsters...and a touch of love!? Of course, you can’t forget the coffee!\n\n[From [Yen Press](https://yenpress.com/titles/9781975393502-lycoris-recoil-ordinary-days)]",
+        "genres": ["slice of life"],
+        "releaseDate": "1970-08-23T02:55:09",
+        "cover": "covers/69406f14f356ef14b911c03c.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f18f356ef14b911c03d" },
+        "title": "86--EIGHTY-SIX, Vol. 1",
+        "author": "Asato Asato",
+        "price": 8.99,
+        "inStock": true,
+        "description": "A War Without Casualties The Republic of San Magnolia has long been under attack from the neighboring Giadian Empire's army of unmanned drones known as the Legion. After years of painstaking research, the Republic finally developed autonomous drones of their own, turning the one-sided struggle into a war without casualties-or at least, that's what the government claims. In truth, there is no such thing as a bloodless war. Beyond the fortified walls protecting the eighty-five Republic territories",
+        "genres": ["action", "adventure", "drama", "romance", "sci-fi"],
+        "releaseDate": "1970-08-22T12:50:10",
+        "cover": "covers/69406f18f356ef14b911c03d.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f1bf356ef14b911c03e" },
+        "title": "86--EIGHTY-SIX, Vol. 11: Dies Passionis",
+        "author": "Asato Asato",
+        "price": 10.99,
+        "inStock": true,
+        "description": "It happened all too quickly. A flash, a rumble, and then… silence. In an instant, an unprecedented Legion assault wrought untold destruction upon nations across the world. As humanity’s borders are sent into swift decline, Shin and Lena are tasked with a large-scale rescue operation that brings them back to Republic soil after what seems like a lifetime. Yet even with humanity on the brink of extinction, they find a country that hasn’t changed-one that cannot change. Many survivors view rescue b",
+        "genres": ["action", "adventure", "drama", "romance", "sci-fi"],
+        "releaseDate": "1970-08-23T02:43:30",
+        "cover": "covers/69406f1bf356ef14b911c03e.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f1ff356ef14b911c03f" },
+        "title": "Black Bullet, Vol. 2: Against a Perfect Sniper",
+        "author": "Kanzaki Shiden",
+        "price": 11.99,
+        "inStock": true,
+        "description": "The World Has Already Ended. Following Rentaro Satomi's defeat of the Stage Five Gastrea, Tokyo Area returns to uneasy normalcy. When the ambitious leader of Osaka Area, Sougen Saitake, demands a visit with Lady Seitenshi, she needs a new bodyguard--and who should she pick but the city's new hero, Rentaro. However, dark forces are conspiring against Lady Seitenshi, and their origin is closer to home than anyone dares to imagine. Rentaro and Enju will have to confront a new kind of threat in orde",
+        "genres": ["action", "adventure", "horror", "romance", "sci-fi"],
+        "releaseDate": "1970-08-21T20:24:59",
+        "cover": "covers/69406f1ff356ef14b911c03f.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f23f356ef14b911c040" },
+        "title": "The Apothecary Diaries: Volume 4",
+        "author": "Hyuuga Natsu",
+        "price": 11.99,
+        "inStock": true,
+        "description": "Though her main duty is still looking after Consort Gyokuyou, Maomao finds time to help her friends and acquaintances in the rear palace, including Xiaolan, who will need a job after her term of service ends, and Consort Lishu, who’s convinced she’s seen a ghost! When complications arise with Gyokuyou’s pregnancy, however, Maomao knows she’s not skilled enough to handle a situation that could threaten the life of both mother and child. She knows someone who is, but they haven’t been welcome in t",
+        "genres": ["drama", "mystery"],
+        "releaseDate": "1970-08-22T07:28:50",
+        "cover": "covers/69406f23f356ef14b911c040.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f26f356ef14b911c041" },
+        "title": "The Detective Is Already Dead, Vol. 5",
+        "author": "nigozyu",
+        "price": 15.99,
+        "inStock": true,
+        "description": "Reunited with Siesta, Kimihiko is pulled back into action as assistant to the Ace Detective. Together, the two face off against Seed again and, with a little extra help, defeat him. Although that particular crisis may be over, the journey to awaken Natsunagi continues. In search of clues for how to save her, Siesta and Kimihiko travel to New York City. However, instead of answers, they find trouble brewing with the Phantom Thief—and worst of all, Siesta disappears!\n\n[From [Yen Press](https://yen",
+        "genres": [
+            "action",
+            "adventure",
+            "comedy",
+            "drama",
+            "fantasy",
+            "mystery",
+            "romance"
+        ],
+        "releaseDate": "1970-08-23T00:02:05",
+        "cover": "covers/69406f26f356ef14b911c041.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f29f356ef14b911c042" },
+        "title": "Raven of the Inner Palace Vol. 1",
+        "author": "Shirakawa Kouko",
+        "price": 8.99,
+        "inStock": true,
+        "description": "A tale of dark magic and court intrigue in a setting inspired by historical China–now an anime!\nDeep within the palace’s walls lives the secluded and mysterious Raven Consort. Some say she is an old woman, while others claim she is young and beautiful. What all stories agree upon is that she has the power to exorcise spirits, lay fatal curses, and find lost objects—for a price. When the young emperor arrives at the door of the Raven Consort seeking magical assistance, his request could shake up ",
+        "genres": ["fantasy", "mystery", "supernatural"],
+        "releaseDate": "1970-08-22T15:40:20",
+        "cover": "covers/69406f29f356ef14b911c042.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f2cf356ef14b911c043" },
+        "title": "Rascal Does Not Dream of His Girlfriend",
+        "author": "Kamoshida Hajime",
+        "price": 13.99,
+        "inStock": false,
+        "description": "The day Sakuta dreamed about is finally here. His search for Touko Kirishima has led him to a music festival where Mai is performing. Filled with concern and anticipation, he attends to figure out who the mysterious singer is and how she’s connected to Mai. Instead, he starts seeing strange things, like multiple Mais. And naturally, the weirdness doesn’t stop there. Will Sakuta be able to unravel this latest mystery and finally keep Mai safe?\n\n[From [Yen Press](https://yenpress.com/titles/979885",
+        "genres": [
+            "comedy",
+            "drama",
+            "fantasy",
+            "romance",
+            "slice of life",
+            "supernatural"
+        ],
+        "releaseDate": "1970-08-23T08:26:49",
+        "cover": "covers/69406f2cf356ef14b911c043.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f30f356ef14b911c044" },
+        "title": "Sword of the Demon Hunter: Kijin Gentōshō Vol. 1",
+        "author": "Nakanishi Motoo",
+        "price": 13.99,
+        "inStock": true,
+        "description": "In this time-spanning fantasy epic of humans and demons, a warrior in feudal Japan must hunt a demon through time–a tale soon to be an anime! And don’t miss the manga adaptation, also from Seven Seas!\nFor generations, a shrine has stood in the mountain village of Kadono, and for each generation the shrine has had an Itsukihime—its shrine maiden—and the maiden has had her guardian. During the Edo period, a young man named Jinta protects the town and the Itsukihime. When he confronts a strange dem",
+        "genres": ["action", "fantasy", "supernatural"],
+        "releaseDate": "1970-08-22T18:30:19",
+        "cover": "covers/69406f30f356ef14b911c044.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f33f356ef14b911c045" },
+        "title": "Another",
+        "author": "Ayatsuji Yukito",
+        "price": 16.99,
+        "inStock": true,
+        "description": "In the spring of 1998, Koichi Sakakibara transfers into Class 3-3 at Yomiyama North Middle School. But little does he know...his new class has a horrible secret. When he takes his seat in class for the first day of school, Koichi is unsettled by his fearful classmates. Despite this atmosphere and warnings from fellow students, Koichi is drawn to the beautiful, distant Mei Misaki, another classmate. But the closer he tries to get to her, the more mysterious she and their class become. And when a ",
+        "genres": ["drama", "fantasy", "horror", "mystery"],
+        "releaseDate": "1970-08-21T14:50:29",
+        "cover": "covers/69406f33f356ef14b911c045.jpg"
+    },
+    {
+        "_id": { "$oid": "69406f36f356ef14b911c046" },
+        "title": "Another Episode S",
+        "author": "Ayatsuji Yukito",
+        "price": 15.99,
+        "inStock": true,
+        "description": "Summer, 1998. Mei Misaki, age fifteen, has gone with her family to their seaside vacation home. There she meets the ghost of Teruya Sakaki, her classmate from Yomiyama North Middle School Class 3-3 who, like Mei, witnessed the mysterious events that had transpired at the school. There begins an adventure of memory and mystery as they search for the ghost's body and his memories alike.\n\n[From [Yen Press](https://yenpress.com/titles/9780316394154-another-episode-s-0-light-novel)]",
+        "genres": ["drama", "fantasy", "horror", "mystery"],
+        "releaseDate": "1970-08-22T01:52:11",
+        "cover": "covers/69406f36f356ef14b911c046.jpg"
+    }
+]

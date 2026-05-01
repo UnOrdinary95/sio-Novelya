@@ -1,0 +1,64 @@
+[
+    {
+        "_id": { "$oid": "69280f3514af1e2d31aff040" },
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "password": "$2b$10$nmAJ95j3da0oulpvHSzNme96ILydSAmTh9QlIT2PXVVuvGCuki2Qa",
+        "isAdmin": false,
+        "cart": [
+            { "lightNovelId": "69406f1bf356ef14b911c03e", "quantity": 1 },
+            { "lightNovelId": "69406f36f356ef14b911c046", "quantity": 1 }
+        ],
+        "purchaseHistory": [
+            {
+                "cart": [
+                    {
+                        "lightNovelId": "69406f33f356ef14b911c045",
+                        "quantity": 1
+                    },
+                    {
+                        "lightNovelId": "69406ee2f356ef14b911c02e",
+                        "quantity": 1
+                    },
+                    {
+                        "lightNovelId": "69406f18f356ef14b911c03d",
+                        "quantity": 1
+                    },
+                    {
+                        "lightNovelId": "69406f1bf356ef14b911c03e",
+                        "quantity": 1
+                    },
+                    {
+                        "lightNovelId": "69406f00f356ef14b911c036",
+                        "quantity": 1
+                    }
+                ],
+                "purchaseDate": { "$date": "2025-12-28T18:38:08.147Z" }
+            },
+            {
+                "cart": [
+                    {
+                        "lightNovelId": "69406f1bf356ef14b911c03e",
+                        "quantity": 1
+                    }
+                ],
+                "purchaseDate": { "$date": "2025-12-28T18:39:23.308Z" }
+            }
+        ],
+        "wishlist": [
+            "69406ee2f356ef14b911c02e",
+            "69406f36f356ef14b911c046",
+            "69406f00f356ef14b911c036"
+        ]
+    },
+    {
+        "_id": { "$oid": "695700435163e7f427f4a866" },
+        "name": "Hernani CASTRO DE ALMEIDA",
+        "email": "hernani@yopmail.com",
+        "password": "$2b$10$HgP/.kPFl1uzdlxxuqmNceIYBfq83ZycAmfB8gSl9bvyudm4oo1VC",
+        "isAdmin": true,
+        "cart": [],
+        "purchaseHistory": [],
+        "wishlist": []
+    }
+]
